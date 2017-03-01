@@ -39,8 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/account_input"
-                    android:hint="@string/account_hint"
                     android:drawablePadding="10dp"
+                    android:hint="@string/account_hint"
                     android:textColor="#FF666666"
                     android:textColorHint="#FFCCCCCC"
                     android:textSize="14sp" />
@@ -55,9 +55,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/lock"
-                        android:inputType="textPassword"
-                        android:hint="@string/password_hint"
                         android:drawablePadding="10dp"
+                        android:hint="@string/password_hint"
+                        android:inputType="textPassword"
                         android:textColor="#FF666666"
                         android:textColorHint="#FFCCCCCC"
                         android:textSize="14sp" />
@@ -68,8 +68,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="right|center_vertical"
                         android:background="@android:color/transparent"
-                        android:src="@drawable/password_show"
-                        />
+                        android:src="@drawable/password_show" />
                 </FrameLayout>
 
                 <TextView
@@ -118,11 +117,13 @@
                     android:gravity="center_horizontal">
 
                     <ImageView
+                        android:id="@+id/iv_qq_weixin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/weixin" />
 
                     <ImageView
+                        android:id="@+id/iv_qq_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
@@ -130,6 +131,7 @@
                         android:src="@drawable/qq" />
 
                     <ImageView
+                        android:id="@+id/iv_weibo_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/weibo" />

@@ -119,7 +119,22 @@ public class LoginActivity extends BaseTitleActivity{
         startActivity(intent);
     }
 
-
+    @OnClick({R.id.iv_qq_weixin,R.id.iv_qq_login,R.id.iv_weibo_login})
+    public void otherLogin(View view){
+        switch (view.getId()) {
+            case R.id.iv_qq_weixin:
+                ToastUtil.show(this,"weixin");
+                break;
+            case R.id.iv_qq_login:
+                ToastUtil.show(this,"qq");
+                break;
+            case R.id.iv_weibo_login:
+                ToastUtil.show(this,"weibo");
+                break;
+            default:
+                break;
+        }
+    }
     @OnClick({R.id.userLogin,R.id.userRegister})
     public void clickLoginOrRegister(View view){
         Timber.d("you clicked button:"+view.getId());
