@@ -1,8 +1,12 @@
 package com.jindou.myapplication.ui.adapter;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -11,14 +15,18 @@ import java.util.List;
  */
 
 public class PicturePagerAdapter extends PagerAdapter{
-    private List<View> views;
-    public PicturePagerAdapter(List<View> pListImgs) {
-        this.views=pListImgs;
+    private ImageView[] views;
+    private Context context;
+    private List<String> urls;
+    public PicturePagerAdapter(Context context, List<String> urls) {
+        this.context=context;
+        this.urls=urls;
+        views=new ImageView[urls.size()];
     }
 
     @Override
     public int getCount() {
-        return views.size();
+        return urls.size();
     }
 
     @Override
@@ -28,12 +36,14 @@ public class PicturePagerAdapter extends PagerAdapter{
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        container.addView(views.get(position % views.size()), 0);
-        return views.get(position % views.size());
+        ImageView imageView=views[position % views.length];
+        container.addView(imageView, 0);
+        Glide.with(context).load(urls.get(position)).into(imageView);
+        return imageView;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView(views.get(position % views.size()));
+        container.removeView(views[position % views.length]);
     }
 }

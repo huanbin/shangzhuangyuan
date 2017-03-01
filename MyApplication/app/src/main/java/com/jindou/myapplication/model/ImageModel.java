@@ -1,10 +1,12 @@
 package com.jindou.myapplication.model;
 
+import java.io.Serializable;
+
 /**
  * Created by zhishi on 2017/2/24.
  */
 
-public class ImageModel {
+public class ImageModel implements Serializable{
     private String ref;
     private String pixel;
     private String alt;

@@ -31,6 +31,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
@@ -142,7 +143,11 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
             List<ImageModel> imageModelList = gson.fromJson(imgs.toString(), new TypeToken<List<ImageModel>>() {
             }.getType());
             //js调用java方法
-            mWebView.addJavascriptInterface(new JSInvokeClass(imageModelList), "jsToast");
+            List<String> imageUrls = new ArrayList<>();
+            for (ImageModel model : imageModelList) {
+                imageUrls.add(model.getSrc());
+            }
+            mWebView.addJavascriptInterface(new JSInvokeClass(imageUrls), "jsToast");
             for (ImageModel model : imageModelList) {
                 String pic = model.getSrc();
                 //拼写html和js时一定注意字符串单双引号，尤其js调用参数（onclick）
@@ -171,7 +176,7 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
         settings.setBlockNetworkImage(false);//允许网络数据加载
         settings.setLoadsImagesAutomatically(true);//自动加载图片
         //混合模式，比如：https网页内容内允许加载http图片资源
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
         mWebView.setHorizontalScrollBarEnabled(false);//关闭水平方向滚动条
@@ -190,9 +195,10 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
     }
 
     public final class JSInvokeClass {
-        private List<ImageModel> images;
+        //        private List<ImageModel> images;
+        private List<String> images;
 
-        public JSInvokeClass(List<ImageModel> images) {
+        public JSInvokeClass(List<String> images) {
             this.images = images;
         }
 
@@ -200,7 +206,7 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
         @JavascriptInterface
         public void scanPictures(String msg) {
 //            Toast.makeText(NewsDetailActivity.this, "通过js调用的Java方法:" + msg, Toast.LENGTH_SHORT).show();
-            FullScreenDialogFragment.newInstance(NewsDetailActivity.this, images, 2).show(getSupportFragmentManager(), FullScreenDialogFragment.TAG_NAME);
+            FullScreenDialogFragment.newInstance(NewsDetailActivity.this, images, 1).show(getSupportFragmentManager(), FullScreenDialogFragment.TAG_NAME);
         }
     }
 
@@ -248,7 +254,7 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
 
         private WebResourceResponse handleRequestViaOkHttp(String url) {
 //            OkHttpClient okHttpClient = new OkHttpClient();
-            OkHttpClient okHttpClient= OkhttpUtils.getInstance(NewsDetailActivity.this);
+            OkHttpClient okHttpClient = OkhttpUtils.getInstance(NewsDetailActivity.this);
             /**
              * 注意这种方式只获取缓存数据，
              * Request request = new Request.Builder().cacheControl(new CacheControl.Builder().onlyIfCached().build()).url(url).build();
