@@ -1,0 +1,105 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 设置activity切换动画 -->
+        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
+        <!--状态栏相关-->
+        <!-- Customize your theme here. -->
+        <!--android5.0之后提供的app颜色设置-->
+        <!--状态栏颜色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--控制各个控件被选中时的颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--页面背景色-->
+        <item name="android:windowBackground">@color/windowBackg</item>
+        <!--ToolBar上的Title颜色-->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+       <!--控件默认状态颜色-->
+        <!-- AppCompatEditText默认状态状态设置底线颜色 -->
+        <item name="colorControlNormal">#FFDDDDDD</item>
+        <!--控件选中状态颜色-->
+        <item name="colorControlActivated">#FFDDDDDD</item>
+        <!--定制EditText-->
+        <!--<item name="android:editTextBackground">@drawable/edit_line_shape</item>-->
+    </style>
+
+    <!-- activity animation 样式 -->
+    <style name="activityAnimation" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_slide_right_out</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@style/BaseAppTheme">
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- <style name="MyDialog" parent="@android:style/Theme.Holo.Dialog">-->
+    <style name="ShareDialog" parent="@android:style/Theme.Dialog">
+        <!-- 是否有边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!--是否在悬浮Activity之上  -->
+        <item name="android:windowIsFloating">true</item>
+        <!--标题  -->
+        <item name="android:windowNoTitle">true</item>
+        <!--阴影  -->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <!-- 进入和退出的动画 -->
+        <item name="android:windowAnimationStyle">@style/ShareDialogAnimation</item>
+        <!-- 点外边可以消失  -->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="ShareDialogAnimation">
+        <!--进入 -->
+        <item name="android:windowEnterAnimation">@anim/share_dialog_pop_in</item>
+        <!--退出-->
+        <item name="android:windowExitAnimation">@anim/share_dialog_pop_out</item>
+    </style>
+
+    <style name="ScanPicturesDialog" parent="@android:style/Theme.Dialog">
+        <!-- 是否有边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!--是否在悬浮Activity之上  -->
+        <item name="android:windowIsFloating">true</item>
+        <!--标题  -->
+        <item name="android:windowNoTitle">true</item>
+        <!--阴影  -->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <!-- 进入和退出的动画 -->
+        <item name="android:windowAnimationStyle">@style/ScanPicturesDialogAnimation</item>
+        <!-- 点外边可以消失  -->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+    <style name="ScanPicturesDialogAnimation">
+        <!--进入 -->
+        <item name="android:windowEnterAnimation">@anim/scan_picture_dialog_pop_in</item>
+        <!--退出-->
+        <item name="android:windowExitAnimation">@anim/scan_picture_dialog_pop_out</item>
+    </style>
+
+    <!--改为SmartTabLayout-->
+    <!--自定义Tablayout的字体及颜色-->
+    <!--<style name="TabStyle" parent="Widget.Design.TabLayout">
+        &lt;!&ndash;<item name="tabMaxWidth">@dimen/tab_max_width</item>&ndash;&gt;
+        <item name="tabPaddingTop">6dp</item>
+        <item name="tabPaddingBottom">6dp</item>
+        <item name="tabIndicatorColor">#F09E0A</item>
+        <item name="tabIndicatorHeight">1.5dp</item>
+        <item name="tabTextAppearance">@style/MyTabLayoutTextAppearance</item>
+        &lt;!&ndash;<item name="tabBackground"></item>&ndash;&gt;
+        <item name="tabSelectedTextColor">#F09E0A</item>
+    </style>
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/common_text_color</item>
+    </style>-->
+    <!--自定义toolbar的navIcon style-->
+    <!--<style name="mToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">-->
+        <!--<item name="android:paddingRight">12dp</item>-->
+        <!--<item name="android:paddingLeft">0dp</item>-->
+    <!--</style>-->
+</resources>

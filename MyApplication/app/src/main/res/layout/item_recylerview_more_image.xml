@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingLeft="12dp">
+
+    <TextView
+        android:id="@+id/tvTitleMore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="12dp"
+        android:text="顾晓然:  原油沥青日内操作建议与原油"
+        android:textColor="#1A1A1A"
+        android:textSize="17sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="12dp">
+        <ImageView
+            android:id="@+id/ivPicMore1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:src="@drawable/singleimage"
+            />
+        <ImageView
+            android:id="@+id/ivPicMore2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:scaleType="center"
+            android:src="@drawable/singleimage"
+            />
+
+        <ImageView
+            android:id="@+id/ivPicMore3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            android:src="@drawable/singleimage"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTypeMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="综合资讯"
+            android:textColor="#FF999999"
+            android:textSize="12sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+        <TextView
+            android:id="@+id/tvSourceMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新华网"
+            android:textColor="#FF999999"
+            android:textSize="12sp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tvTypeMore"
+            />
+
+        <ImageButton
+            android:id="@+id/ibShareMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/share_collect"
+            android:scaleType="center"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            />
+    </RelativeLayout>
+</LinearLayout>

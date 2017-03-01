@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">商状元</string>
+    <!--导航栏-->
+    <string name="drawer_open">打开</string>
+    <string name="nav_leida">雷达</string>
+    <string name="nav_fav">我的收藏</string>
+    <string name="nav_download">WIFI离线下载</string>
+    <string name="nav_suggest">反馈与建议</string>
+    <string name="nav_aboutus">关于我们</string>
+    <!--导航栏-->
+
+    <string name="app_title">商状元</string>
+    <string name="action_favorite">我的收藏</string>
+    <string name="register_now">立即注册</string>
+    <string name="login">登录</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="radar">雷达</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="account_hint">请输入手机号/邮箱</string>
+    <string name="password_hint">请输入密码</string>
+    <string name="tab_shangwen">商闻</string>
+    <string name="tab_shangzhao">商招</string>
+    <string name="tab_shangji">商机</string>
+    <string name="tab_xinzhibao">新知报</string>
+    <string name="other_login_type">其它登录方式</string>
+    <string name="verifycode">请输入验证码</string>
+    <string name="register_account">注册账号</string>
+    <string name="register">注册</string>
+    <string name="search">搜索</string>
+    <string name="already_has_account">已有账号</string>
+    <string name="advise">广告</string>
+    <string name="weixinhaoyou">微信好友</string>
+    <string name="weixinpengyouquan">微信朋友圈</string>
+    <string name="mobile_qq">手机QQ</string>
+    <string-array name="fav_tags_top">
+        <item>创业与投资</item>
+        <item>政经新闻</item>
+        <item>商业新闻</item>
+        <item>it互联网</item>
+        <item>房地产</item>
+        <item>家政</item>
+        <item>少儿教育</item>
+        <item>娱乐新闻</item>
+        <item>国际新闻</item>
+        <item>国内新闻</item>
+        <item>社会</item>
+    </string-array>
+    <string-array name="fav_tags_bootom">
+        <item>创业与投资2</item>
+        <item>政经新闻2</item>
+        <item>商业新闻2</item>
+        <item>it互联网2</item>
+        <item>房地产2</item>
+        <item>家政2</item>
+        <item>少儿教育2</item>
+        <item>娱乐新闻2</item>
+        <item>国际新闻2</item>
+        <item>国内新闻2</item>
+        <item>社会2</item>
+    </string-array>
+    <!--welcome-->
+    <string name="check_to_pass">I accept terms and conditions.</string>
+    <string name="error_message">Please accept terms and conditions first.</string>
+    <string name="launch_intro_activity">Launch intro activity</string>
+    <string name="lorem_ipsum">Lorem ipsum \n\ndolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure</string>
+    <string name="share_cancle">取消</string>
+    <string name="share_sina_weibo">新浪微博</string>
+    <string name="change_font_size">字体调整</string>
+    <string name="collect">收藏</string>
+    <string name="cancle_collect">取消收藏</string>
+    <string name="night_mode">夜间模式</string>
+</resources>

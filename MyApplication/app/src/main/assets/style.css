@@ -1,0 +1,83 @@
+body{
+    margin:14px 20px 0px 20px;
+}
+.title{
+    font-size: 24px;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 33.6px;
+    text-align:center;
+}
+.source{
+    font-size: 13px;
+    color: #999999;
+    letter-spacing: 0;
+    line-height: 14px;
+    float:left;
+    margin:20px 0px;
+}
+.time{
+    font-size: 13px;
+    color: #999999;
+    letter-spacing: 0;
+    line-height: 12px;
+    float:right;
+    margin:20px 0px;
+}
+.content{
+    font-size: 16px;
+    color: #505050;
+    letter-spacing: 0;
+    line-height: 26px;
+    clear:both;
+}
+/*
+导读部分样式
+*/
+p.title:before {content:"导读";color:#f18e1a;font-size:14px;}
+p.title{
+color:#666666;
+font-size:14px;
+text-align:justify;
+text-justify:inter-ideograph;
+padding:15px 0px;
+border-top:1px solid #EEEEEE;
+border-bottom:1px solid #EEEEEE;
+}
+
+.lookArticleSource{
+    text-decoration:none;
+    color:#599DE4;
+    padding:14px 18px 20px 18px;
+    font-size:13px;
+    letter-spacing: 0;
+    line-height: 12px;
+}
+
+img{
+/*
+图片自适应屏幕
+注意这里高度不能auto,需要使用实际尺寸占位.
+宽度100%防止图片宽度超过屏幕，WebView出现左右滑动的现象
+*/
+    width:100%;
+    /*height:auto;*/
+    /*占位图*/
+    background-color:#CCCCCC;
+    /*background-image:url(file:///android_asset/imgbg.jpg);*/
+    /*动画*/
+    animation:testanimations  1s 1;/*infinite无限循环*/
+    -webkit-animation:testanimations  1s 1; /*Safari and Chrome，兼容浏览器*/
+}
+
+ @keyframes testanimations {
+     from{opacity:0;}
+     to{opacity:1;}
+ }
+
+ @-webkit-keyframes testanimations {
+     from{opacity:0;}
+     to{opacity:1;}
+ }
+
+

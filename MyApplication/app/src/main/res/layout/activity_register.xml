@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+    <!--导航栏-->
+    <include
+        layout="@layout/common_title"
+        />
+    <!--content-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="38dp"
+        android:paddingRight="38dp">
+
+        <EditText
+            android:id="@+id/userAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:drawableLeft="@drawable/account_input"
+            android:drawablePadding="8dp"
+            android:hint="@string/account_hint"
+            android:textColor="#FF666666"
+            android:textColorHint="#FFCCCCCC"
+            android:textSize="14sp"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/userVerifyCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/verifycode"
+                android:drawablePadding="8dp"
+                android:hint="@string/verifycode"
+                android:textColor="#FF666666"
+                android:textColorHint="#FFCCCCCC"
+                android:textSize="14sp"
+                />
+
+            <Button
+                android:id="@+id/btGetVerifyCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right|center_vertical"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:text="点击获取"
+                android:textColor="#F09E0A"
+                android:textSize="12sp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/userPwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/lock"
+                android:drawablePadding="8dp"
+                android:hint="@string/password_hint"
+                android:inputType="textPassword"
+                android:textColor="#FF666666"
+                android:textColorHint="#FFCCCCCC"
+                android:textSize="14sp"/>
+            <!--android:drawableRight="@drawable/selector_show_hide_password"-->
+            <!--<Button-->
+            <!--android:id="@+id/mIbtShowPwd"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="right|center_vertical"-->
+            <!--android:background="@drawable/password_hide"-->
+            <!--/>-->
+            <ImageButton
+                android:id="@+id/btShowPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:background="@android:color/transparent"
+                android:src="@drawable/password_hide"
+                />
+        </FrameLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/bg_register_button"
+            android:text="@string/register"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bg_register_button_normal"
+                android:text="@string/already_has_account"
+                android:textColor="#F09E0A"
+                android:textSize="16sp"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

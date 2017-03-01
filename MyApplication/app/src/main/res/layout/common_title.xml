@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/bg_app_bar"
+    android:fitsSystemWindows="true"
+    android:gravity="center_vertical">
+    <!--没有它，导航栏会上移-->
+    <!-- android:fitsSystemWindows="true"-->
+    <TextView
+        android:id="@+id/common_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:text="@string/login"
+        android:textColor="#333333"
+        android:textSize="17sp" />
+
+    <ImageView
+        android:id="@+id/common_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:scaleType="center"
+        android:src="@drawable/back" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/common_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:text="完成"
+            android:gravity="center_vertical"
+            android:textColor="#666666"
+            android:textSize="15sp"
+            android:visibility="visible" />
+        <ImageButton
+            android:id="@+id/common_overflow_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:src="@drawable/share_collect"
+            android:contentDescription="商闻详情页pop菜单"
+            android:textColor="#666666"
+            android:textSize="15sp"
+            android:visibility="visible"
+            android:background="@null"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/line_color" />
+</RelativeLayout>
