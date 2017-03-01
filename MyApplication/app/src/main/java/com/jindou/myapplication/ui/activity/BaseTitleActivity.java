@@ -79,5 +79,10 @@ public abstract class BaseTitleActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    public void onBackPressed() {
+        Timber.d("you clicked mobile back key...");
+        finish();
+    }
 
 }
