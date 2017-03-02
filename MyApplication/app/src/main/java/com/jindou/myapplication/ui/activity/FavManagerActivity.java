@@ -1,12 +1,16 @@
 package com.jindou.myapplication.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.jindou.myapplication.R;
+import com.jindou.myapplication.ui.fragment.ShangwenFragment;
+import com.jindou.myapplication.ui.fragment.ShangzhaoFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,10 +35,19 @@ public class FavManagerActivity extends BaseTitleActivity {
     private TagView.OnTagClickListener tagClickListenerTop;
     private TagView.OnTagClickListener tagClickListenerBottom;
     private String currentTag;
-
+    private String type;
     @Override
     public String setTitle() {
-        return "商闻.兴趣管理";
+        if (!TextUtils.isEmpty(type)) {
+            if ("shangwenFav".equals(type)) {
+                return "商闻.兴趣管理";
+            } else if ("shangzhaoFav".equals(type)) {
+                return "商招.兴趣管理";
+            }else {
+                return "";
+            }
+        }
+        return "";
     }
 
     @Override
@@ -53,11 +66,6 @@ public class FavManagerActivity extends BaseTitleActivity {
     }
 
     @Override
-    public void onClickOverflow() {
-
-    }
-
-    @Override
     public int getContentViewId() {
         return R.layout.activity_fav_manager;
     }
@@ -68,6 +76,13 @@ public class FavManagerActivity extends BaseTitleActivity {
         tags_top = new ArrayList<String>();
         tags_bottom = new ArrayList<String>();
         initTags();
+    }
+
+    @Override
+    public void handIntent() {
+        super.handIntent();
+        Intent intent = getIntent();
+        type=intent.getStringExtra(ShangwenFragment.FAV_TYPE);
     }
 
     private void initTags() {

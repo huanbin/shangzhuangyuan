@@ -33,7 +33,7 @@ import timber.log.Timber;
  */
 
 public class ShangwenFragment extends Fragment {
-
+    public static String FAV_TYPE="FAV_TYPE";
     private String[] titles = new String[]{"互联网金融", "电商", "创投", "财经", "房地产", "娱乐", "国内新闻", "国际新闻"};
     private AppCompatActivity activity;
     private IDrawerListener iDrawerListener;
@@ -62,27 +62,14 @@ public class ShangwenFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
         activity = (AppCompatActivity) getActivity();
         iDrawerListener = (IDrawerListener) activity;
-//      //可以管理action menu
-        setHasOptionsMenu(true);
-        activity.setSupportActionBar(toolbar);
-        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (iDrawerListener != null) {
-                    iDrawerListener.openDrawer();
-                }
-            }
-        });
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(activity, "you clicked MenuItem.", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
+        initToolbar();
+        initViewPager();
+    }
+
+    private void initViewPager() {
         //ViewPager
         viewPager.setAdapter(new FragmentStatePagerAdapter(activity.getSupportFragmentManager()) {
             @Override
@@ -134,6 +121,26 @@ public class ShangwenFragment extends Fragment {
         tabLayout.setViewPager(viewPager);
     }
 
+    private void initToolbar() {
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (iDrawerListener != null) {
+                    iDrawerListener.openDrawer();
+                }
+            }
+        });
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(activity, "you clicked MenuItem.", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+    }
+
     //    R.id.toolbar_search
     @OnClick({R.id.imgFavmanager})
 //    @OnClick({R.id.toolbar_radar,R.id.imgFavmanager})
@@ -143,7 +150,9 @@ public class ShangwenFragment extends Fragment {
 //            Timber.d("you clicked radar.");
 //        } else
         if (id==R.id.imgFavmanager) {
-            startActivity(new Intent(activity, FavManagerActivity.class));
+            Intent intent = new Intent(activity, FavManagerActivity.class);
+            intent.putExtra(ShangwenFragment.FAV_TYPE,"shangwenFav");
+            startActivity(intent);
         }
     }
 

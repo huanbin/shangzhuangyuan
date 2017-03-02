@@ -1,38 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    >
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/shangzhaoToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_collapseMode="pin"
         android:elevation="4dp"
         android:background="@color/bg_app_bar"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:navigationIcon="@drawable/nav_icon"
-        app:navigationContentDescription="抽屉菜单"
         >
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/shangwentitle"
+            android:text="商招"
+            android:gravity="center"
             android:layout_gravity="center"
+            android:textColor="#FF333333"
+            android:textSize="17sp"
             />
-        <!--<ImageButton-->
-            <!--android:id="@+id/toolbar_radar"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:src="@drawable/radar_gold"-->
-            <!--android:layout_gravity="right"-->
-            <!--android:background="@android:color/transparent"-->
-            <!--/>-->
     </android.support.v7.widget.Toolbar>
     <FrameLayout
         android:layout_width="match_parent"
@@ -40,7 +29,9 @@
         android:background="#FFFFFF"
         >
         <com.ogaclejapan.smarttablayout.SmartTabLayout
-            android:id="@+id/viewpagertab"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/shangzhaoTabLayout"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             app:stl_customTabTextLayoutId="@layout/custom_tab"
@@ -57,7 +48,7 @@
         <!--app:stl_overlineColor="#FFDDDDDD"
             app:stl_overlineThickness="0.5dp"-->
         <ImageButton
-            android:id="@+id/imgFavmanager"
+            android:id="@+id/shangzhaoFavmanager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/favmanager"
@@ -69,7 +60,7 @@
             />
     </FrameLayout>
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/shangzhaoViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

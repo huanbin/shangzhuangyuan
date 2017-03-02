@@ -20,8 +20,8 @@ import com.githang.statusbar.StatusBarCompat;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.ui.activity.user.LoginActivity;
 import com.jindou.myapplication.ui.fragment.ShangwenFragment;
-import com.jindou.myapplication.ui.fragment.MyFragment2;
-import com.jindou.myapplication.ui.fragment.MyFragment3;
+import com.jindou.myapplication.ui.fragment.ShangzhaoFragment;
+import com.jindou.myapplication.ui.fragment.ShangjiFragment;
 import com.jindou.myapplication.ui.fragment.MyFragment4;
 import com.jindou.myapplication.ui.util.UiUtils;
 
@@ -73,8 +73,8 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
     public LinearLayout lyAbountus;
 
     private ShangwenFragment fragment1;
-    private MyFragment2 fragment2;
-    private MyFragment3 fragment3;
+    private ShangzhaoFragment fragment2;
+    private ShangjiFragment fragment3;
     private MyFragment4 fragment4;
     private FragmentManager fragmentManager;
 
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
                 break;
             case 1:
                 if (fragment2 == null) {
-                    fragment2 = MyFragment2.newInstance("Tab2...");
+                    fragment2 = ShangzhaoFragment.newInstance("Tab2...");
                     fragmentTransaction.add(R.id.container, fragment2);
                 } else {
                     fragmentTransaction.show(fragment2);
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
                 break;
             case 2:
                 if (fragment3 == null) {
-                    fragment3 = MyFragment3.newInstance("Tab3...");
+                    fragment3 = ShangjiFragment.newInstance("Tab3...");
                     fragmentTransaction.add(R.id.container, fragment3);
                 } else {
                     fragmentTransaction.show(fragment3);

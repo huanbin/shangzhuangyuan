@@ -41,6 +41,7 @@ public abstract class BaseTitleActivity extends AppCompatActivity {
 //    public abstract void onClickOverflow();
     public  void onClickComplete(){};
     public  void onClickOverflow(){};
+    public  void handIntent(){};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,7 @@ public abstract class BaseTitleActivity extends AppCompatActivity {
         //注意上面动态添加的布局
         ButterKnife.bind(this);
         mActivity=this;
+        handIntent();
         tvTitle.setText(setTitle());
         if (setRightCompleteViewShow()&&setRightOverfloViewShow()) {
             throw new RuntimeException("you can only set setRightCompleteViewShow or setRightOverfloViewShow one with value true...");
