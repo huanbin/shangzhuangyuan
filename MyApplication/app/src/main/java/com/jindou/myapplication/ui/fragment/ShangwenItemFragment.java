@@ -21,7 +21,6 @@ import com.jindou.myapplication.model.NewsModel;
 import com.jindou.myapplication.ui.activity.NewsDetailActivity;
 import com.jindou.myapplication.ui.adapter.SimpleAdapter;
 import com.jindou.myapplication.ui.view.ShareAndCollectDialog;
-import com.jindou.myapplication.ui.view.ShareDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ShangwenItemFragment extends Fragment implements SimpleAdapter.IItemClickListener {
+public class ShangWenItemFragment extends Fragment implements SimpleAdapter.IItemClickListener {
 
     @BindView(R.id.recyclerView)
     public RecyclerView recyclerView;
@@ -40,12 +39,12 @@ public class ShangwenItemFragment extends Fragment implements SimpleAdapter.IIte
     private RecyclerView.LayoutManager layoutManager;
     private List<NewsModel> personList;
 
-    public ShangwenItemFragment() {
+    public ShangWenItemFragment() {
         // Required empty public constructor
     }
 
-    public static ShangwenItemFragment newInstance() {
-        ShangwenItemFragment fragment = new ShangwenItemFragment();
+    public static ShangWenItemFragment newInstance() {
+        ShangWenItemFragment fragment = new ShangWenItemFragment();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
@@ -72,7 +71,7 @@ public class ShangwenItemFragment extends Fragment implements SimpleAdapter.IIte
         //if true，data change can not change  recyclerView size
         recyclerView.setHasFixedSize(true);
 //        recyclerView.addOnItemTouchListener();
-        recyclerviewAdapter = new SimpleAdapter(personList,getActivity().getApplication(),ShangwenItemFragment.this);
+        recyclerviewAdapter = new SimpleAdapter(personList,getActivity().getApplication(),ShangWenItemFragment.this);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 //        动画

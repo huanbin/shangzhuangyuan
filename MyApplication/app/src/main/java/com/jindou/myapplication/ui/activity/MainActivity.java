@@ -19,10 +19,10 @@ import android.widget.Toast;
 import com.githang.statusbar.StatusBarCompat;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.ui.activity.user.LoginActivity;
-import com.jindou.myapplication.ui.fragment.ShangwenFragment;
-import com.jindou.myapplication.ui.fragment.ShangzhaoFragment;
-import com.jindou.myapplication.ui.fragment.ShangjiFragment;
-import com.jindou.myapplication.ui.fragment.MyFragment4;
+import com.jindou.myapplication.ui.fragment.ShangWenFragment;
+import com.jindou.myapplication.ui.fragment.ShangZhaoFragment;
+import com.jindou.myapplication.ui.fragment.ShangJiFragment;
+import com.jindou.myapplication.ui.fragment.XinZhiBaoFragment;
 import com.jindou.myapplication.ui.util.UiUtils;
 
 import butterknife.BindView;
@@ -35,7 +35,7 @@ import timber.log.Timber;
  * common title 48dp
  * mdpi
  */
-public class MainActivity extends AppCompatActivity implements ShangwenFragment.IDrawerListener{
+public class MainActivity extends AppCompatActivity implements ShangWenFragment.IDrawerListener{
     public static final String KEY_NAV_LEFT="imgLeft";
     public static final String KEY_NAV_NAME="name";
     public static final String KEY_NAV_RIGHT="imgRight";
@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
     @BindView(R.id.ly_aboutus)
     public LinearLayout lyAbountus;
 
-    private ShangwenFragment fragment1;
-    private ShangzhaoFragment fragment2;
-    private ShangjiFragment fragment3;
-    private MyFragment4 fragment4;
+    private ShangWenFragment fragment1;
+    private ShangZhaoFragment fragment2;
+    private ShangJiFragment fragment3;
+    private XinZhiBaoFragment fragment4;
     private FragmentManager fragmentManager;
 
     private boolean isSelected;
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
         switch (i) {
             case 0:
                 if (fragment1 == null) {
-                    fragment1 = new ShangwenFragment();
+                    fragment1 = new ShangWenFragment();
                     fragmentTransaction.add(R.id.container, fragment1);
                 } else {
                     fragmentTransaction.show(fragment1);
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
                 break;
             case 1:
                 if (fragment2 == null) {
-                    fragment2 = ShangzhaoFragment.newInstance("Tab2...");
+                    fragment2 = ShangZhaoFragment.newInstance("Tab2...");
                     fragmentTransaction.add(R.id.container, fragment2);
                 } else {
                     fragmentTransaction.show(fragment2);
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
                 break;
             case 2:
                 if (fragment3 == null) {
-                    fragment3 = ShangjiFragment.newInstance("Tab3...");
+                    fragment3 = ShangJiFragment.newInstance("Tab3...");
                     fragmentTransaction.add(R.id.container, fragment3);
                 } else {
                     fragmentTransaction.show(fragment3);
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements ShangwenFragment.
                 break;
             case 3:
                 if (fragment4 == null) {
-                    fragment4 = MyFragment4.newInstance("Tab4...");
+                    fragment4 = XinZhiBaoFragment.newInstance("Tab4...");
                     fragmentTransaction.add(R.id.container, fragment4);
                 } else {
                     fragmentTransaction.show(fragment4);

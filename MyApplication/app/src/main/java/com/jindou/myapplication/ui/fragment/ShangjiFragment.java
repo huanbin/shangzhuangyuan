@@ -1,11 +1,9 @@
 package com.jindou.myapplication.ui.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -17,27 +15,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jindou.myapplication.R;
+import com.jindou.myapplication.ui.activity.FavManagerActivity;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
-
-import java.security.PublicKey;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class ShangjiFragment extends Fragment {
+public class ShangJiFragment extends Fragment {
 
     private String[] titles = new String[]{"IT互联网", "交通/物流", "财政/金融", "纺织/制造","教育/培训"};
     private static final String ARG_PARAM1 = "param1";
     private String mParam1;
     private AppCompatActivity activity;
-    private ShangwenFragment.IDrawerListener iDrawerListener;
+    private ShangWenFragment.IDrawerListener iDrawerListener;
 
     @BindView(R.id.shangjiTabLayout)
     public SmartTabLayout shangjiTabLayout;
@@ -55,12 +52,15 @@ public class ShangjiFragment extends Fragment {
     public TextView shangjiZhaobiao;
     @BindView(R.id.shangjiReport)
     public TextView shangjiReport;
-    public ShangjiFragment() {
+    @BindView(R.id.shangjiFavManager)
+    public ImageButton shangjiFavManager;
+
+    public ShangJiFragment() {
         // Required empty public constructor
     }
 
-    public static ShangjiFragment newInstance(String param1) {
-        ShangjiFragment fragment = new ShangjiFragment();
+    public static ShangJiFragment newInstance(String param1) {
+        ShangJiFragment fragment = new ShangJiFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
@@ -81,7 +81,7 @@ public class ShangjiFragment extends Fragment {
         //必须设置（否则fragment不支持menu，无法显示）
         setHasOptionsMenu(true);
         activity = (AppCompatActivity) getActivity();
-        iDrawerListener = (ShangwenFragment.IDrawerListener) activity;
+        iDrawerListener = (ShangWenFragment.IDrawerListener) activity;
         initToolbar();
         initViewPager();
         setCurrent(0);
@@ -93,7 +93,7 @@ public class ShangjiFragment extends Fragment {
             @Override
             public Fragment getItem(int position) {
                 if (position>=0) {
-                    return ShangwenItemFragment.newInstance();
+                    return ShangWenItemFragment.newInstance();
                 }
                 return MyFragment.newInstance(titles[position]);
             }
@@ -163,6 +163,12 @@ public class ShangjiFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.sj_menu,menu);
+    }
+    @OnClick(R.id.shangjiFavManager)
+    public void OnClickFav(View view){
+        Intent intent = new Intent(activity, FavManagerActivity.class);
+        intent.putExtra(ShangWenFragment.FAV_TYPE,"shangjiFav");
+        startActivity(intent);
     }
 
     @OnClick({R.id.shangjiHuizhan,R.id.shangjiData,R.id.shangjiZhaoshang,R.id.shangjiZhaobiao,R.id.shangjiReport})

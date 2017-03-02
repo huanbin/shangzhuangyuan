@@ -3,14 +3,12 @@ package com.jindou.myapplication.ui.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.jindou.myapplication.R;
-import com.jindou.myapplication.ui.fragment.ShangwenFragment;
-import com.jindou.myapplication.ui.fragment.ShangzhaoFragment;
+import com.jindou.myapplication.ui.fragment.ShangWenFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,7 +80,7 @@ public class FavManagerActivity extends BaseTitleActivity {
     public void handIntent() {
         super.handIntent();
         Intent intent = getIntent();
-        type=intent.getStringExtra(ShangwenFragment.FAV_TYPE);
+        type=intent.getStringExtra(ShangWenFragment.FAV_TYPE);
     }
 
     private void initTags() {

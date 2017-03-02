@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jindou.myapplication.R;
@@ -26,13 +24,12 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import timber.log.Timber;
 
 /**
  * Created by zhishi on 2017/2/17.
  */
 
-public class ShangwenFragment extends Fragment {
+public class ShangWenFragment extends Fragment {
     public static String FAV_TYPE="FAV_TYPE";
     private String[] titles = new String[]{"互联网金融", "电商", "创投", "财经", "房地产", "娱乐", "国内新闻", "国际新闻"};
     private AppCompatActivity activity;
@@ -75,7 +72,7 @@ public class ShangwenFragment extends Fragment {
             @Override
             public Fragment getItem(int position) {
                 if (position>=0) {
-                    return ShangwenItemFragment.newInstance();
+                    return ShangWenItemFragment.newInstance();
                 }
                 return MyFragment.newInstance(titles[position]);
             }
@@ -151,7 +148,7 @@ public class ShangwenFragment extends Fragment {
 //        } else
         if (id==R.id.imgFavmanager) {
             Intent intent = new Intent(activity, FavManagerActivity.class);
-            intent.putExtra(ShangwenFragment.FAV_TYPE,"shangwenFav");
+            intent.putExtra(ShangWenFragment.FAV_TYPE,"shangwenFav");
             startActivity(intent);
         }
     }

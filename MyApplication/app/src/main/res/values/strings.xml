@@ -84,4 +84,14 @@
     <string name="collect">收藏</string>
     <string name="cancle_collect">取消收藏</string>
     <string name="night_mode">夜间模式</string>
+    <string name="xinzhibao_new">最新</string>
+    <string name="xinzhibao_subscription">我的订阅</string>
+    <string name="xinzhibao_marketing">市场营销</string>
+    <string name="xinzhibao_business_info">商业见闻</string>
+    <string name="xinzhibao_person_resource">人力资源</string>
+    <string name="xinzhibao_new_technology">新科技</string>
+    <string name="xinzhibao_new_pay">新零售</string>
+    <string name="xinzhibao_knowledge_playing">文化娱乐</string>
+    <string name="xinzhibao_financing">投融资</string>
+    <string name="xinzhibao_product_manager">产品经理</string>
 </resources>

@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jindou.myapplication.R;
@@ -28,14 +27,14 @@ import butterknife.OnClick;
 import timber.log.Timber;
 
 
-public class ShangzhaoFragment extends Fragment {
+public class ShangZhaoFragment extends Fragment {
 
     private String[] titles = new String[]{"市场营销", "项目管理", "人力资源", "法务管理", "人才管理培训"};
 
     private static final String ARG_PARAM1 = "param1";
     private String mParam1;
     private AppCompatActivity activity;
-    private ShangwenFragment.IDrawerListener iDrawerListener;
+    private ShangWenFragment.IDrawerListener iDrawerListener;
 
     @BindView(R.id.shangzhaoToolbar)
     public Toolbar shangzhaoToolbar;
@@ -46,12 +45,12 @@ public class ShangzhaoFragment extends Fragment {
     @BindView(R.id.shangzhaoFavmanager)
     public ImageButton shangzhaoFavmanager;
 
-    public ShangzhaoFragment() {
+    public ShangZhaoFragment() {
         // Required empty public constructor
     }
 
-    public static ShangzhaoFragment newInstance(String param1) {
-        ShangzhaoFragment fragment = new ShangzhaoFragment();
+    public static ShangZhaoFragment newInstance(String param1) {
+        ShangZhaoFragment fragment = new ShangZhaoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         fragment.setArguments(args);
@@ -69,7 +68,7 @@ public class ShangzhaoFragment extends Fragment {
     @OnClick(R.id.shangzhaoFavmanager)
     public void onClickFavmanager(View view){
         Intent intent = new Intent(activity, FavManagerActivity.class);
-        intent.putExtra(ShangwenFragment.FAV_TYPE,"shangzhaoFav");
+        intent.putExtra(ShangWenFragment.FAV_TYPE,"shangzhaoFav");
         startActivity(intent);
     }
 
@@ -86,7 +85,7 @@ public class ShangzhaoFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         setHasOptionsMenu(true);
         activity = (AppCompatActivity) getActivity();
-        iDrawerListener = (ShangwenFragment.IDrawerListener) activity;
+        iDrawerListener = (ShangWenFragment.IDrawerListener) activity;
         initToolbar();
         initViewPager();
     }
@@ -110,7 +109,7 @@ public class ShangzhaoFragment extends Fragment {
             @Override
             public Fragment getItem(int position) {
                 if (position >= 0) {
-                    return ShangwenItemFragment.newInstance();
+                    return ShangWenItemFragment.newInstance();
                 }
                 return MyFragment.newInstance(titles[position]);
             }
