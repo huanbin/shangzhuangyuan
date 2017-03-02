@@ -19,8 +19,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.ImageModel;
-import com.jindou.myapplication.ui.fragment.FullScreenDialogFragment;
 import com.jindou.myapplication.ui.view.OverflowMenuDialog;
+import com.jindou.myapplication.ui.view.ScanPicturesDialog;
 import com.jindou.myapplication.ui.view.ShareDialog;
 import com.jindou.myapplication.utils.IoUtils;
 import com.jindou.myapplication.utils.OkhttpUtils;
@@ -33,13 +33,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -204,9 +202,16 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
 
         //注意android4.4以上，js调用的方法，必须加上注解@JavascriptInterface，否则无法调用
         @JavascriptInterface
-        public void scanPictures(String msg) {
+        public void scanPictures(String currentUrl) {
 //            Toast.makeText(NewsDetailActivity.this, "通过js调用的Java方法:" + msg, Toast.LENGTH_SHORT).show();
-            FullScreenDialogFragment.newInstance(NewsDetailActivity.this, images, 1).show(getSupportFragmentManager(), FullScreenDialogFragment.TAG_NAME);
+            int currentIndex=-1;
+            if (images!=null&&images.size()>0) {
+                currentIndex=images.indexOf(currentUrl);
+                if (currentIndex!=-1) {
+                    ScanPicturesDialog dialog=new ScanPicturesDialog(NewsDetailActivity.this,getSupportFragmentManager(),images,currentIndex);
+                    dialog.show();
+                }
+            }
         }
     }
 

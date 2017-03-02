@@ -83,20 +83,11 @@ public class ShangwenFragment extends Fragment {
                 return true;
             }
         });
-        //fab
-//        activity.findViewById(R.id.imgFavmanager).setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                Log.d("ScrollingActivity", "imgFavmanager.");
-//                Toast.makeText(activity, "you clicked imgFavmanager", Toast.LENGTH_SHORT).show();
-//                return true;
-//            }
-//        });
         //ViewPager
         viewPager.setAdapter(new FragmentStatePagerAdapter(activity.getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                if (position==1) {
+                if (position>=0) {
                     return ShangwenItemFragment.newInstance();
                 }
                 return MyFragment.newInstance(titles[position]);
