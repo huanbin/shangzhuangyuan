@@ -18,9 +18,9 @@ import java.util.List;
 public class SimpleAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHolder> {
     private List<NewsModel> list;
     private Context mContext;
-    private IItemClickListener iShare;
+    private OnItemClickListener iShare;
 
-    public SimpleAdapter(List<NewsModel> list, Context context, IItemClickListener iShare) {
+    public SimpleAdapter(List<NewsModel> list, Context context, OnItemClickListener iShare) {
         this.list = list;
         this.mContext = context;
         this.iShare = iShare;
@@ -273,7 +273,7 @@ public class SimpleAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHolder> 
         }
     }
 
-    public interface IItemClickListener {
+    public interface OnItemClickListener {
         public void share();
 
         public void goToDetailNews(int position);

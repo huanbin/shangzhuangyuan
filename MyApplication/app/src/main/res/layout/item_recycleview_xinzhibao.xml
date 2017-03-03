@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    android:background="#FFFFFFFF"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -57,6 +60,7 @@
         </RelativeLayout>
 
         <ImageButton
+            android:id="@+id/xinzhibao_subscription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -65,56 +69,64 @@
             android:src="@drawable/subscription" />
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="175dp"
-        android:scaleType="center"
-        android:layout_gravity="center_horizontal"
-        android:background="@android:color/holo_green_dark" />
-    <TextView
+    <com.jindou.myapplication.ui.view.CircleImageView
+        android:id="@+id/xinzhibao_content_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:src="@drawable/xinzhibao_new"
+        android:scaleType="fitXY"
+        app:degreed="12dp"
+        />
+
+    <TextView
+        android:id="@+id/xinzhibao_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:gravity="left"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:text="顾萧然：大奖得主是位70后，秦皇岛市青龙县本地人"
         android:textColor="#FF1A1A1A"
-        android:textSize="17sp"
-        />
+        android:textSize="17sp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="40dp">
+
         <ImageView
             android:id="@+id/ivReadCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
             android:scaleType="center"
-            android:src="@drawable/readcount"
-            android:layout_margin="12dp"
-            />
+            android:src="@drawable/readcount" />
+
         <TextView
+            android:id="@+id/xinzhibao_read_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_toRightOf="@id/ivReadCount"
+            android:gravity="center"
             android:text="200"
             android:textColor="#FFCCCCCC"
-            android:textSize="13sp"
-            android:layout_toRightOf="@id/ivReadCount"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
-            android:gravity="center"
-            />
+            android:textSize="13sp" />
+
         <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:src="@drawable/share_collect"
-            android:background="@null"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:paddingRight="12dp"
+            android:layout_centerVertical="true"
+            android:background="@null"
             android:paddingLeft="12dp"
-            />
+            android:paddingRight="12dp"
+            android:src="@drawable/share_collect" />
     </RelativeLayout>
 </LinearLayout>

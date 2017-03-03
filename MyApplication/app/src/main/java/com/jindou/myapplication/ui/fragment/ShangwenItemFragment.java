@@ -29,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class ShangWenItemFragment extends Fragment implements SimpleAdapter.IItemClickListener {
+public class ShangWenItemFragment extends Fragment implements SimpleAdapter.OnItemClickListener {
 
     @BindView(R.id.recyclerView)
     public RecyclerView recyclerView;
