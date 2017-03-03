@@ -37,7 +37,7 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType, boolean isItem) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_recycleview_xinzhibao, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_recycleview_xinzhibao_new, parent, false);
         RecyclerView.ViewHolder holder = new NewViewHolder(view);
         return holder;
     }

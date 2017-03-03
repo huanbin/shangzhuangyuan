@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +26,7 @@ import com.andview.refreshview.XRefreshViewFooter;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.XinzhibaoNewModel;
 import com.jindou.myapplication.ui.adapter.XinzhibaoNewAdapter;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +38,11 @@ import butterknife.OnClick;
 
 public class XinZhiBaoFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
+    private final  static String[] pageTitles=new String[]{"动态","作者主页"};
     private String mParam1;
     private AppCompatActivity activity;
     private List<XinzhibaoNewModel> mDatas;
     private XinzhibaoNewAdapter adapter;
-    private ViewStub newViewStub;
-    private ViewStub subscriptionViewStub;
-    private View view;
 
     @BindView(R.id.xinzhibaoNew)
     public TextView xinzhibaoNew;
@@ -55,6 +56,17 @@ public class XinZhiBaoFragment extends Fragment {
     public RecyclerView xinzhibaoRecyclerView;
     @BindView(R.id.xinzhibaoRefreshView)
     public XRefreshView xinzhibaoRefreshView;
+    @BindView(R.id.xinzhibao_new_view)
+    public View newView;
+    @BindView(R.id.xinzhibao_subscription_view)
+    public View subscriptionView;
+    //我的订阅
+    private boolean hasShowSubscription;
+    @BindView(R.id.xinzhibao_subsription_viewpager)
+    public ViewPager subsriptionViewPager;
+    @BindView(R.id.xinzhibao_subscription_tablayout)
+    public SmartTabLayout subscriptionTablayout;
+
 
     public XinZhiBaoFragment() {
         // Required empty public constructor
@@ -79,10 +91,7 @@ public class XinZhiBaoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_xinzhibao, container, false);
-        newViewStub = (ViewStub) view.findViewById(R.id.xinzhibao_new_viewStub);
-        subscriptionViewStub = (ViewStub) view.findViewById(R.id.xinzhibao_subscription_viewStub);
-        newViewStub.setVisibility(View.VISIBLE);
+        View view = inflater.inflate(R.layout.fragment_xinzhibao, container, false);
         ButterKnife.bind(this, view);
         setCurrent(0);
         return view;
@@ -92,6 +101,33 @@ public class XinZhiBaoFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         activity = (AppCompatActivity) getActivity();
+        initNewViews();
+        initSubscriptionView();
+        showNew();
+    }
+
+    private void initSubscriptionView() {
+
+        subsriptionViewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return new XinzhibaoSubFragment();
+            }
+
+            @Override
+            public int getCount() {
+                return 2;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return pageTitles[position];
+            }
+        });
+        subscriptionTablayout.setViewPager(subsriptionViewPager);
+    }
+
+    private void initNewViews() {
         xinzhibaoRecyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
         //xinzhibaoRecyclerView.addItemDecoration(new DividerItemDecoration(activity, OrientationHelper.VERTICAL));
         xinzhibaoRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -101,7 +137,7 @@ public class XinZhiBaoFragment extends Fragment {
         xinzhibaoRecyclerView.setAdapter(adapter);
         //        加载更多
         adapter.setCustomLoadMoreView(new XRefreshViewFooter(getContext()));
-        configXRfreshView(xinzhibaoRefreshView,new XRefreshView.SimpleXRefreshListener(){
+        configXRfreshView(xinzhibaoRefreshView, new XRefreshView.SimpleXRefreshListener() {
             //          下拉刷新
             @Override
             public void onRefresh() {
@@ -113,6 +149,7 @@ public class XinZhiBaoFragment extends Fragment {
                     }
                 }, 500);
             }
+
             //上拉加载更多
             @Override
             public void onLoadMore(boolean isSilence) {
@@ -147,8 +184,8 @@ public class XinZhiBaoFragment extends Fragment {
     }
 
     private void loadMoreData() {
-        if (mDatas!=null) {
-            for (int i=0;i<3;i++){
+        if (mDatas != null) {
+            for (int i = 0; i < 3; i++) {
                 mDatas.add(new XinzhibaoNewModel());
             }
             adapter.notifyDataSetChanged();
@@ -156,7 +193,7 @@ public class XinZhiBaoFragment extends Fragment {
     }
 
     private void requestRecyclerViewData() {
-        if (mDatas!=null) {
+        if (mDatas != null) {
             mDatas.clear();
             for (int i = 0; i < 6; i++) {
                 mDatas.add(new XinzhibaoNewModel());
@@ -226,21 +263,19 @@ public class XinZhiBaoFragment extends Fragment {
      * 最新
      */
     private void showNew() {
-        if (newViewStub!=null) {
-            newViewStub.setVisibility(View.VISIBLE);
-            subscriptionViewStub.setVisibility(View.GONE);
-        }
+        setVisible(true);
+    }
+
+    private void setVisible(boolean isVisible) {
+        newView.setVisibility(isVisible?View.VISIBLE:View.GONE);
+        subscriptionView.setVisibility(!isVisible?View.VISIBLE:View.GONE);
     }
 
     /**
      * 我的订阅
      */
     private void showSubscription() {
-        if (subscriptionViewStub !=null) {
-            newViewStub.setVisibility(View.GONE);
-            subscriptionViewStub.setVisibility(View.VISIBLE);
-            ButterKnife.bind(this,view);
-        }
+        setVisible(false);
     }
 
     private void setCurrent(int position) {

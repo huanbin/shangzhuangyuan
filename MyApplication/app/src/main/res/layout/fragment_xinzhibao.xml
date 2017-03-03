@@ -44,16 +44,18 @@
         </LinearLayout>
     </FrameLayout>
 
-    <ViewStub
-        android:id="@+id/xinzhibao_new_viewStub"
+    <include
+        android:id="@+id/xinzhibao_new_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout="@layout/fragment_xinzhibao_new"
+        layout="@layout/fragment_xinzhibao_new"
+        android:visibility="visible"
         />
-    <ViewStub
-        android:id="@+id/xinzhibao_subscription_viewStub"
+    <include
+        android:id="@+id/xinzhibao_subscription_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout="@layout/fragment_xinzhibao_my_subscription"
+        layout="@layout/fragment_xinzhibao_my_subscription"
+        android:visibility="gone"
         />
 </LinearLayout>

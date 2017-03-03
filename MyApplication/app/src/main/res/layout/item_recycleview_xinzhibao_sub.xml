@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:background="#FFFFFFFF"
+    android:orientation="vertical">
+
+    <com.jindou.myapplication.ui.view.CircleImageView
+        android:id="@+id/xinzhibao_sub_user_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:degreed="30dp"
+        android:src="@drawable/xinzhibao_sub_user_icon"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/xinzhibao_sub_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="一条产品狗"
+        android:textColor="#FF333333"
+        android:textSize="15sp"
+        android:layout_toRightOf="@id/xinzhibao_sub_user_icon"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/xinzhibao_sub_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="资深产品狗,与您一起组团打怪升级升级"
+        android:textColor="#FF999999"
+        android:textSize="13sp"
+        android:layout_toRightOf="@id/xinzhibao_sub_user_icon"
+        android:layout_below="@id/xinzhibao_sub_title"
+        android:layout_centerVertical="true"
+        />
+</RelativeLayout>

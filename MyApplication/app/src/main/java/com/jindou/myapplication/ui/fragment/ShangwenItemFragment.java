@@ -68,6 +68,11 @@ public class ShangWenItemFragment extends Fragment implements SimpleAdapter.OnIt
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         personList=new ArrayList<NewsModel>();
+        initViewsAnDatas();
+
+    }
+
+    private void initViewsAnDatas() {
         //if true，data change can not change  recyclerView size
         recyclerView.setHasFixedSize(true);
 //        recyclerView.addOnItemTouchListener();
