@@ -24,6 +24,7 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
 
     private List<XinzhibaoNewModel> mDatas;
     private Context mContext;
+    private boolean isSubsrciption;
 
     public XinzhibaoNewAdapter(List<XinzhibaoNewModel> mDatas, Context mContext) {
         this.mDatas = mDatas;
@@ -45,7 +46,7 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position, boolean isItem) {
         XinzhibaoNewModel newModel = mDatas.get(position);
-        NewViewHolder viewHolder = (NewViewHolder) holder;
+        final NewViewHolder viewHolder = (NewViewHolder) holder;
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +64,18 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
         } else {
             viewHolder.subscription.setImageResource(R.drawable.subscription);
         }
+        viewHolder.subscription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isSubsrciption = !isSubsrciption;
+                if (isSubsrciption) {
+                    viewHolder.subscription.setImageResource(R.drawable.subscription_already);
+                } else {
+                    viewHolder.subscription.setImageResource(R.drawable.subscription);
+                }
+            }
+        });
+
 //        if (newModel.isSubscription()) {
 //            viewHolder.subscription.setImageResource(R.drawable.subscription_already);
 //        }else {
