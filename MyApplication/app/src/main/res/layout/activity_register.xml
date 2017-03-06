@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-    >
-    <!--导航栏-->
-    <include
-        layout="@layout/common_title"
-        />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--&lt;!&ndash;导航栏&ndash;&gt;-->
+    <!--<include-->
+    <!--layout="@layout/common_title"-->
+    <!--/>-->
     <!--content-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,59 +20,73 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:background="@null"
             android:drawableLeft="@drawable/account_input"
-            android:drawablePadding="8dp"
+            android:drawablePadding="15dp"
             android:hint="@string/account_hint"
             android:textColor="#FF666666"
             android:textColorHint="#FFCCCCCC"
-            android:textSize="14sp"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_color"
+            android:layout_marginTop="3dp"
             />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/userVerifyCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_marginTop="30dp"
                 android:drawableLeft="@drawable/verifycode"
-                android:drawablePadding="8dp"
+                android:drawablePadding="15dp"
                 android:hint="@string/verifycode"
                 android:textColor="#FF666666"
                 android:textColorHint="#FFCCCCCC"
-                android:textSize="14sp"
-                />
-
+                android:textSize="14sp" />
             <Button
                 android:id="@+id/btGetVerifyCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="right|center_vertical"
+                android:layout_gravity="right|bottom"
+                android:gravity="right|bottom"
                 android:background="@null"
-                android:gravity="right|center_vertical"
                 android:text="点击获取"
                 android:textColor="#F09E0A"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
         </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_color"
+            android:layout_marginTop="3dp"
+            />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/userPwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_marginTop="30dp"
                 android:drawableLeft="@drawable/lock"
-                android:drawablePadding="8dp"
+                android:drawablePadding="15dp"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
                 android:textColor="#FF666666"
                 android:textColorHint="#FFCCCCCC"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
             <!--android:drawableRight="@drawable/selector_show_hide_password"-->
             <!--<Button-->
             <!--android:id="@+id/mIbtShowPwd"-->
@@ -86,11 +99,19 @@
                 android:id="@+id/btShowPwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
+                android:layout_gravity="right|bottom"
                 android:background="@android:color/transparent"
                 android:src="@drawable/password_hide"
+                android:layout_marginBottom="8dp"
                 />
         </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_color"
+            android:layout_marginTop="3dp"
+            />
 
         <Button
             android:layout_width="match_parent"
@@ -99,14 +120,12 @@
             android:background="@drawable/bg_register_button"
             android:text="@string/register"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            >
+            android:layout_marginBottom="30dp">
 
             <Button
                 android:layout_width="match_parent"
@@ -115,8 +134,7 @@
                 android:background="@drawable/bg_register_button_normal"
                 android:text="@string/already_has_account"
                 android:textColor="#F09E0A"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

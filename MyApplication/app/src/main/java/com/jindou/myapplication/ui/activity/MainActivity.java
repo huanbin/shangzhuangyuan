@@ -2,7 +2,9 @@ package com.jindou.myapplication.ui.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -15,8 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.githang.statusbar.StatusBarCompat;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.ui.activity.user.LoginActivity;
 import com.jindou.myapplication.ui.fragment.ShangWenFragment;
@@ -28,6 +28,7 @@ import com.jindou.myapplication.ui.util.UiUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import qiu.niorgai.StatusBarCompat;
 import timber.log.Timber;
 
 /**
@@ -84,7 +85,12 @@ public class MainActivity extends AppCompatActivity implements ShangWenFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        沉浸式状态栏
-        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.bg_app_bar),true);
+        if (Build.VERSION.SDK_INT==Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.bg_app_bar));
+        }
+        if (Build.VERSION.SDK_INT==Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         ButterKnife.bind(this);
 //        全屏滑动DrawerLayout
         UiUtils.setDrawerLeftEdgeSize(this,mDrawerLayout,0.5f);

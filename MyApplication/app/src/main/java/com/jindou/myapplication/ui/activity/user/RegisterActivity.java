@@ -1,29 +1,25 @@
 package com.jindou.myapplication.ui.activity.user;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.githang.statusbar.StatusBarCompat;
 import com.jindou.myapplication.R;
-
+import com.jindou.myapplication.ui.activity.BaseTitleActivity;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
 /**
  * Created by zhishi on 2017/2/16.
  */
-public class RegisterActivity extends AppCompatActivity{
+public class RegisterActivity extends BaseTitleActivity{
+
+    private int type;
+
     @BindView(R.id.common_title)
     public TextView tvCommomTitle;
     @BindView(R.id.btGetVerifyCode)
@@ -33,13 +29,37 @@ public class RegisterActivity extends AppCompatActivity{
     public ImageButton mIbtShowPwd;
     @BindView(R.id.userPwd)
     public EditText etUserPwd;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.bg_app_bar),true);
-        ButterKnife.bind(this);
-        tvCommomTitle.setText(R.string.register_account);
+    public int getContentViewId() {
+        return R.layout.activity_register;
+    }
+
+    @Override
+    public String setTitle() {
+        if (type==1) {
+            return getString(R.string.register_account);
+        } else if (type==2) {
+
+            return getString(R.string.forget_password);
+        }
+        return "";
+    }
+
+    @Override
+    public boolean setRightCompleteViewShow() {
+        return false;
+    }
+
+    @Override
+    public boolean setRightOverfloViewShow() {
+        return false;
+    }
+
+    @Override
+    public void handIntent() {
+        super.handIntent();
+        type=Integer.parseInt(getIntent().getStringExtra(LoginActivity.KEY_TYPE));
     }
     /**
      * 以后会抽取

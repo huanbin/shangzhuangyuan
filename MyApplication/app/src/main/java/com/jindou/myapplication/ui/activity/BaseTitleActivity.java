@@ -1,5 +1,6 @@
 package com.jindou.myapplication.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,12 +8,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.githang.statusbar.StatusBarCompat;
 import com.jindou.myapplication.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import qiu.niorgai.StatusBarCompat;
 import timber.log.Timber;
 
 /**
@@ -46,7 +46,13 @@ public abstract class BaseTitleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_acticity_common_title);
-        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.bg_app_bar),true);
+        if (Build.VERSION.SDK_INT==Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.bg_app_bar));
+        }
+        if (Build.VERSION.SDK_INT==Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+//        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.bg_app_bar));
         mContainer= (FrameLayout) findViewById(R.id.layoutContainer);
         mContainer.addView(getLayoutInflater().inflate(getContentViewId(),mContainer,false));
         //注意上面动态添加的布局

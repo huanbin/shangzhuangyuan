@@ -1,6 +1,7 @@
 package com.jindou.myapplication.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.XinzhibaoNewModel;
+import com.jindou.myapplication.ui.activity.AuthorActivity;
 import com.jindou.myapplication.ui.util.ToastUtil;
 
 import java.util.List;
@@ -55,6 +57,12 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
         });
         // TODO: 2017/3/3
         viewHolder.userAvtar.setImageResource(R.drawable.qq);
+        viewHolder.userAvtar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext,AuthorActivity.class));
+            }
+        });
         viewHolder.userName.setText("商状元");
         // TODO: 2017/3/3
         viewHolder.date.setText("2017-01-06");

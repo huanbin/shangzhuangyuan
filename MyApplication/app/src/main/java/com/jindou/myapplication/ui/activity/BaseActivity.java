@@ -1,17 +1,14 @@
 package com.jindou.myapplication.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import android.view.View;
 
-import com.githang.statusbar.StatusBarCompat;
 import com.jindou.myapplication.R;
-
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
+import qiu.niorgai.StatusBarCompat;
 
 /**
  * Created by zhishi on 2017/2/16.
@@ -27,7 +24,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
         ButterKnife.bind(this);
-        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.bg_app_bar),true);
+        if (Build.VERSION.SDK_INT==Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.bg_app_bar));
+        }
+        if (Build.VERSION.SDK_INT==Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
         mActivity=this;
     }
 }

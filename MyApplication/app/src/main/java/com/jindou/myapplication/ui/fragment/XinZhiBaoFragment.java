@@ -1,9 +1,14 @@
 package com.jindou.myapplication.ui.fragment;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -26,6 +31,7 @@ import com.andview.refreshview.XRefreshViewFooter;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.XinzhibaoNewModel;
 import com.jindou.myapplication.ui.adapter.XinzhibaoNewAdapter;
+import com.jindou.myapplication.ui.view.WrapperView;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
@@ -242,6 +248,7 @@ public class XinZhiBaoFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @OnClick({R.id.xinzhibaoNew, R.id.xinzhibaoSubscription})
     public void OnSelectItem(View view) {
         clearState();
@@ -249,14 +256,33 @@ public class XinZhiBaoFragment extends Fragment {
             case R.id.xinzhibaoNew:
                 setCurrent(0);
                 showNew();
+//                startAnimator(view);
                 break;
             case R.id.xinzhibaoSubscription:
                 setCurrent(1);
                 showSubscription();
+//                startAnimator(view);
                 break;
             default:
                 break;
         }
+    }
+    //stateAnimator
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void startAnimator(View view) {
+        WrapperView wrapperView=new WrapperView(view);
+        AnimatorSet set = new AnimatorSet();
+        ObjectAnimator backgroundAnimator = ObjectAnimator.ofArgb(wrapperView, "background", Color.parseColor("#FFF09E0A"));
+        backgroundAnimator.setDuration(1000);
+//        //默认RESTART
+//        backgroundAnimator.setRepeatMode(ValueAnimator.RESTART);
+//        //默认为0
+//        backgroundAnimator.setRepeatCount(0);
+        ObjectAnimator translateAnimator = ObjectAnimator.ofFloat(wrapperView, "alpha", 0, 1.0f);
+        translateAnimator.setDuration(1000);
+
+        set.playTogether(backgroundAnimator, translateAnimator);
+        set.start();
     }
 
     /**

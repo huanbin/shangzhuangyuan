@@ -10,16 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.githang.statusbar.StatusBarCompat;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.ui.activity.BaseTitleActivity;
 import com.jindou.myapplication.ui.util.ToastUtil;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import timber.log.Timber;
 
