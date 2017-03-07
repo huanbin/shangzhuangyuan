@@ -12,11 +12,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.UserDynamicModel;
+import com.jindou.myapplication.model.XinzhibaoNewModel;
+import com.jindou.myapplication.ui.activity.AuthorArticleDetail;
+import com.jindou.myapplication.ui.adapter.AuthorArticleAdapter;
 import com.jindou.myapplication.ui.adapter.XinzhibaoSubAdapter;
 
 import java.util.ArrayList;
@@ -29,16 +33,16 @@ import butterknife.ButterKnife;
  * Created by zhishi on 2017/3/3.
  */
 
-public class XinzhibaoSubFragment extends Fragment {
+public class XinzhibaoSubDynamicFragment extends Fragment {
 
-    private BaseRecyclerAdapter recyclerAdapter;
+    private AuthorArticleAdapter articleAdapter;
     @BindView(R.id.xRefreshView)
     public XRefreshView xRefreshView;
     @BindView(R.id.recyclerView)
     public RecyclerView recyclerView;
 
     private AppCompatActivity activity;
-    private List<UserDynamicModel> datas;
+    private List<XinzhibaoNewModel> datas;
 
 
     @Nullable
@@ -60,16 +64,16 @@ public class XinzhibaoSubFragment extends Fragment {
     private void initViewsAnDatas() {
         //if true，data change can not change  recyclerView size
         recyclerView.setHasFixedSize(true);
-        recyclerAdapter = new XinzhibaoSubAdapter(datas,activity);
+        articleAdapter = new AuthorArticleAdapter(datas,activity);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 //        动画
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 //        分割线
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setAdapter(articleAdapter);
 //        加载更多
-        recyclerAdapter.setCustomLoadMoreView(new XRefreshViewFooter(getContext()));
+        articleAdapter.setCustomLoadMoreView(new XRefreshViewFooter(getContext()));
 //
         configXRfreshView(xRefreshView, new XRefreshView.SimpleXRefreshListener() {
             //          下拉刷新
@@ -132,9 +136,9 @@ public class XinzhibaoSubFragment extends Fragment {
         if (datas!=null) {
             datas.clear();
             for (int i=0;i<6;i++){
-                datas.add(new UserDynamicModel());
+                datas.add(new XinzhibaoNewModel());
             }
-            recyclerAdapter.notifyDataSetChanged();
+            articleAdapter.notifyDataSetChanged();
         }
     }
 
@@ -142,11 +146,9 @@ public class XinzhibaoSubFragment extends Fragment {
     private void loadMoreData() {
         if (datas!=null) {
             for (int i=0;i<3;i++){
-                datas.add(new UserDynamicModel());
+                datas.add(new XinzhibaoNewModel());
             }
-            recyclerAdapter.notifyDataSetChanged();
+            articleAdapter.notifyDataSetChanged();
         }
     }
-
-
 }

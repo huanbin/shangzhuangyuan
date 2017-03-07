@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jindou.myapplication.R;
-import com.jindou.myapplication.ui.activity.NewsDetailActivity;
+import com.jindou.myapplication.ui.activity.ShangWenNewsDetailActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -67,16 +67,16 @@ public class OverflowMenuDialog extends CustomDialogCommon {
                     over_collect_image.setImageResource(R.drawable.collection);
                     overTvCollect.setText(R.string.cancle_collect);
                 }
-                ((NewsDetailActivity)mContext).setActivityCollected(isCollected);
+                ((ShangWenNewsDetailActivity)mContext).setActivityCollected(isCollected);
                 break;
             case R.id.over_change_font_size:
                 Timber.d("ckicked change font size...");
                 if (isShowing()) {
                     dismiss();
                 }
-                ChangeFontSizeDialog dialog=new ChangeFontSizeDialog((NewsDetailActivity)mContext, Gravity.BOTTOM,R.style.ShareDialog);
+                ChangeFontSizeDialog dialog=new ChangeFontSizeDialog((ShangWenNewsDetailActivity)mContext, Gravity.BOTTOM,R.style.ShareDialog);
                 dialog.show();
-//                ((NewsDetailActivity)mContext).setActivityFontSize(32);
+//                ((ShangWenNewsDetailActivity)mContext).setActivityFontSize(32);
                 break;
             case R.id.bt_over_cancle:
                 if (isShowing()) {

@@ -4,52 +4,70 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
 import com.jindou.myapplication.R;
-import com.jindou.myapplication.ui.adapter.AuthorArticleAdapter;
 import com.jindou.myapplication.model.XinzhibaoNewModel;
-
+import com.jindou.myapplication.ui.adapter.AuthorArticleAdapter;
+import com.jindou.myapplication.ui.util.UiUtils;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import qiu.niorgai.StatusBarCompat;
 
 /**
  * Created by zhishi on 2017/3/6.
  */
-public class AuthorActivity extends AppCompatActivity {
+public class AuthorActivity extends BaseActivity {
 
     @BindView(R.id.authorArticleRecyclerView)
     public RecyclerView recyclerView;
     @BindView(R.id.authorArticleRefreshView)
     public XRefreshView xRefreshView;
+    @BindView(R.id.author_appbar)
+    public RelativeLayout authorAppbar;
+    @BindView(R.id.author_back)
+    ImageView authorBack;
+    @BindView(R.id.author_subscription)
+    ImageButton authorSubscription;
+    @BindView(R.id.author_user_icon)
+    ImageView authorUserIcon;
+    @BindView(R.id.author_user_name)
+    TextView authorUserName;
+    @BindView(R.id.author_desc_content)
+    TextView authorDescContent;
+    @BindView(R.id.author_article_count)
+    TextView authorArticleCount;
+    @BindView(R.id.author_subscrible_count)
+    TextView authorSubscribleCount;
+
     private AuthorArticleAdapter recyclerviewAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private List<XinzhibaoNewModel> xinzhibaoNewModelList;
-
-//    @Override
-//    public int getContentViewId() {
-//        return R.layout.activity_author_center;
-//    }
+    private boolean isSubcrible;
+    @Override
+    public int getContentViewId() {
+        return R.layout.activity_author_center;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.transparent));
-
-        setContentView(R.layout.activity_author_center);
+        StatusBarCompat.translucentStatusBar(this);
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) authorAppbar.getLayoutParams();
+        layoutParams.setMargins(0, UiUtils.getStatusHeight(this), 0, 0);
         ButterKnife.bind(this);
         initViewsAnDatas();
     }
@@ -149,5 +167,24 @@ public class AuthorActivity extends AppCompatActivity {
             xinzhibaoNewModelList.add(news);
         }
         recyclerviewAdapter.notifyDataSetChanged();
+    }
+
+    @OnClick({R.id.author_back, R.id.author_subscription})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.author_back:
+                if (!isFinishing()) {
+                    finish();
+                }
+                break;
+            case R.id.author_subscription:
+                isSubcrible=!isSubcrible;
+                if (isSubcrible) {
+                    authorSubscription.setImageResource(R.drawable.subscription_already);
+                }else {
+                    authorSubscription.setImageResource(R.drawable.subscription);
+                }
+                break;
+        }
     }
 }

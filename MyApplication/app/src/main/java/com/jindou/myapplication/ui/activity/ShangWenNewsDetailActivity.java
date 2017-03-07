@@ -48,7 +48,7 @@ import timber.log.Timber;
 /**
  * Created by zhishi on 2017/2/23.
  */
-public class NewsDetailActivity extends BaseTitleActivity implements OverflowMenuDialog.ICollectedListener {
+public class ShangWenNewsDetailActivity extends BaseTitleActivity implements OverflowMenuDialog.ICollectedListener {
 
     @BindView(R.id.webView)
     public WebView mWebView;
@@ -87,7 +87,7 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
 
     @Override
     public void onClickOverflow() {
-        OverflowMenuDialog dialog = new OverflowMenuDialog(NewsDetailActivity.this, Gravity.BOTTOM, R.style.ShareDialog);
+        OverflowMenuDialog dialog = new OverflowMenuDialog(ShangWenNewsDetailActivity.this, Gravity.BOTTOM, R.style.ShareDialog);
         dialog.show();
     }
 
@@ -104,7 +104,7 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
                 }
                 break;
             case R.id.ibShare:
-                ShareDialog dialog = new ShareDialog(NewsDetailActivity.this, Gravity.BOTTOM, R.style.ShareDialog);
+                ShareDialog dialog = new ShareDialog(ShangWenNewsDetailActivity.this, Gravity.BOTTOM, R.style.ShareDialog);
                 dialog.show();
                 break;
             default:
@@ -203,12 +203,12 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
         //注意android4.4以上，js调用的方法，必须加上注解@JavascriptInterface，否则无法调用
         @JavascriptInterface
         public void scanPictures(String currentUrl) {
-//            Toast.makeText(NewsDetailActivity.this, "通过js调用的Java方法:" + msg, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ShangWenNewsDetailActivity.this, "通过js调用的Java方法:" + msg, Toast.LENGTH_SHORT).show();
             int currentIndex=-1;
             if (images!=null&&images.size()>0) {
                 currentIndex=images.indexOf(currentUrl);
                 if (currentIndex!=-1) {
-                    ScanPicturesDialog dialog=new ScanPicturesDialog(NewsDetailActivity.this,getSupportFragmentManager(),images,currentIndex);
+                    ScanPicturesDialog dialog=new ScanPicturesDialog(ShangWenNewsDetailActivity.this,getSupportFragmentManager(),images,currentIndex);
                     dialog.show();
                 }
             }
@@ -259,7 +259,7 @@ public class NewsDetailActivity extends BaseTitleActivity implements OverflowMen
 
         private WebResourceResponse handleRequestViaOkHttp(String url) {
 //            OkHttpClient okHttpClient = new OkHttpClient();
-            OkHttpClient okHttpClient = OkhttpUtils.getInstance(NewsDetailActivity.this);
+            OkHttpClient okHttpClient = OkhttpUtils.getInstance(ShangWenNewsDetailActivity.this);
             /**
              * 注意这种方式只获取缓存数据，
              * Request request = new Request.Builder().cacheControl(new CacheControl.Builder().onlyIfCached().build()).url(url).build();

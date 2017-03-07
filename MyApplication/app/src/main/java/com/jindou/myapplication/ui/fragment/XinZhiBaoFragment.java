@@ -2,7 +2,6 @@ package com.jindou.myapplication.ui.fragment;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -45,6 +43,7 @@ import butterknife.OnClick;
 public class XinZhiBaoFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private final  static String[] pageTitles=new String[]{"动态","作者主页"};
+    private Fragment[] subFragments=new Fragment[]{new XinzhibaoSubDynamicFragment(),new XinzhibaoSubAuthorFragment()};
     private String mParam1;
     private AppCompatActivity activity;
     private List<XinzhibaoNewModel> mDatas;
@@ -117,7 +116,7 @@ public class XinZhiBaoFragment extends Fragment {
         subsriptionViewPager.setAdapter(new FragmentPagerAdapter(getFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return new XinzhibaoSubFragment();
+                return subFragments[position];
             }
 
             @Override

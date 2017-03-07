@@ -18,7 +18,7 @@ import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.NewsModel;
-import com.jindou.myapplication.ui.activity.NewsDetailActivity;
+import com.jindou.myapplication.ui.activity.ShangWenNewsDetailActivity;
 import com.jindou.myapplication.ui.adapter.SimpleAdapter;
 import com.jindou.myapplication.ui.view.ShareAndCollectDialog;
 
@@ -180,6 +180,6 @@ public class ShangWenItemFragment extends Fragment implements SimpleAdapter.OnIt
     @Override
     public void goToDetailNews(int position) {
         Toast.makeText(getActivity(),"you clicked new item..."+position,Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getActivity(),NewsDetailActivity.class));
+        startActivity(new Intent(getActivity(),ShangWenNewsDetailActivity.class));
     }
 }

@@ -64,10 +64,6 @@ public class LoginActivity extends BaseTitleActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login);
-//        StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.bg_app_bar),true);
-//        ButterKnife.bind(this);
-//        tvCommomTitle.setText(R.string.login);
     }
 
     /**

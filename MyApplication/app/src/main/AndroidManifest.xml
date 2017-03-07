@@ -51,7 +51,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activity.NewsDetailActivity"
+            android:name=".ui.activity.ShangWenNewsDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.activity.TestActivity">

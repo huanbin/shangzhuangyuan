@@ -3,6 +3,7 @@ package com.jindou.myapplication.ui.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.XinzhibaoNewModel;
 import com.jindou.myapplication.ui.activity.AuthorActivity;
+import com.jindou.myapplication.ui.activity.AuthorArticleDetail;
 import com.jindou.myapplication.ui.util.ToastUtil;
+import com.jindou.myapplication.ui.view.ShareDialog;
 
 import java.util.List;
 
@@ -52,7 +55,9 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.show(mContext, "you clicked xinzhibao item:" + position);
+//                ToastUtil.show(mContext, "you clicked xinzhibao item:" + position);
+                Intent intent = new Intent(mContext, AuthorArticleDetail.class);
+                mContext.startActivity(intent);
             }
         });
         // TODO: 2017/3/3
@@ -92,6 +97,12 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
         viewHolder.image.setImageResource(R.drawable.xinzhibao_new);
         viewHolder.title.setText("顾萧然: 原油沥青日内操作原理讲解原理讲解原理讲解");
         viewHolder.readCount.setText(String.valueOf(260));
+        viewHolder.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ShareDialog(mContext, Gravity.BOTTOM,R.style.ShareDialog).show();
+            }
+        });
     }
 
     @Override
@@ -109,6 +120,7 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
         public ImageView image;
         public TextView title;
         public TextView readCount;
+        public ImageButton share;
         public View view;
 
         public NewViewHolder(View itemView) {
@@ -122,6 +134,7 @@ public class XinzhibaoNewAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
             image = (ImageView) itemView.findViewById(R.id.xinzhibao_content_image);
             title = (TextView) itemView.findViewById(R.id.xinzhibao_title);
             readCount = (TextView) itemView.findViewById(R.id.xinzhibao_read_count);
+            share= (ImageButton) itemView.findViewById(R.id.xinzhibao_new_share);
         }
     }
 }

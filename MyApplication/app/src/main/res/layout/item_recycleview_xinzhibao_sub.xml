@@ -35,7 +35,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/xinzhibao_sub_content"
+            android:id="@+id/xinzhibao_sub_cancle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/xinzhibao_sub_title"
@@ -46,5 +46,16 @@
             android:textColor="#FF999999"
             android:textSize="13sp" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/xinzhibao_sub_content"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/cancel_subscription"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="#FFEC4444"
+        android:visibility="gone"
+        />
 </RelativeLayout>

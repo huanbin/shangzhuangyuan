@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.jindou.myapplication.R;
-import com.jindou.myapplication.ui.activity.NewsDetailActivity;
+import com.jindou.myapplication.ui.activity.ShangWenNewsDetailActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,13 +31,13 @@ public class ChangeFontSizeDialog extends CustomDialogCommon {
     public void onClick(View view){
         switch (view.getId()) {
             case R.id.btSmallFont:
-                ((NewsDetailActivity)mContext).setActivityFontSize(14);
+                ((ShangWenNewsDetailActivity)mContext).setActivityFontSize(14);
                 break;
             case R.id.btMediumFont:
-                ((NewsDetailActivity)mContext).setActivityFontSize(18);
+                ((ShangWenNewsDetailActivity)mContext).setActivityFontSize(18);
                 break;
             case R.id.btLargeFont:
-                ((NewsDetailActivity)mContext).setActivityFontSize(22);
+                ((ShangWenNewsDetailActivity)mContext).setActivityFontSize(22);
                 break;
             default:
                 break;

@@ -50,6 +50,7 @@ public class ScanPicturesDialog extends Dialog {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.scan_picture_dialog_view);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPagerScanPicture);
+        viewPager.setOffscreenPageLimit(1);
         ImageView ivSavePicture= (ImageView) findViewById(R.id.ivSavePicture);
         ivSavePicture.setOnClickListener(new View.OnClickListener() {
             @Override
