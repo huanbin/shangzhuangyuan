@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.ui.activity.FavManagerActivity;
+import com.jindou.myapplication.ui.activity.SearchActivity;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import butterknife.BindView;
@@ -145,7 +146,17 @@ public class ShangJiFragment extends Fragment {
         shangjiToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(activity, "you clicked MenuItem.", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(activity, "you clicked MenuItem.", Toast.LENGTH_SHORT).show();
+                switch (item.getItemId()) {
+                    case R.id.shnagjiSearch:
+                        Intent intent=new Intent(activity, SearchActivity.class);
+                        intent.putExtra(ShangWenFragment.SEARCH_SOURCE,"商机搜索:会展");
+                        intent.putExtra(ShangWenFragment.SEARCH_TYPE,2);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
                 return true;
             }
         });

@@ -9,15 +9,20 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+
 import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.model.UserDynamicModel;
 import com.jindou.myapplication.ui.adapter.XinzhibaoSubAdapter;
+import com.jindou.myapplication.ui.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,15 +57,19 @@ public class XinzhibaoSubAuthorFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        activity= (AppCompatActivity) getActivity();
-        datas=new ArrayList<>();
+        activity = (AppCompatActivity) getActivity();
+        datas = new ArrayList<>();
         initViewsAnDatas();
     }
 
+    private float lastX;
+    private int scaledTouchSlop;
+
     private void initViewsAnDatas() {
+        scaledTouchSlop = ViewConfiguration.get(activity).getScaledTouchSlop();
         //if true，data change can not change  recyclerView size
         recyclerView.setHasFixedSize(true);
-        recyclerAdapter = new XinzhibaoSubAdapter(datas,activity);
+        recyclerAdapter = new XinzhibaoSubAdapter(datas, activity);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 //        动画
@@ -83,6 +92,7 @@ public class XinzhibaoSubAuthorFragment extends Fragment {
                     }
                 }, 500);
             }
+
             //上拉加载更多
             @Override
             public void onLoadMore(boolean isSilence) {
@@ -129,9 +139,9 @@ public class XinzhibaoSubAuthorFragment extends Fragment {
 
     //  初始化RecyclerView数据
     private void requestRecyclerViewData() {
-        if (datas!=null) {
+        if (datas != null) {
             datas.clear();
-            for (int i=0;i<6;i++){
+            for (int i = 0; i < 6; i++) {
                 datas.add(new UserDynamicModel());
             }
             recyclerAdapter.notifyDataSetChanged();
@@ -140,8 +150,8 @@ public class XinzhibaoSubAuthorFragment extends Fragment {
 
     //    上拉加载更多数据
     private void loadMoreData() {
-        if (datas!=null) {
-            for (int i=0;i<3;i++){
+        if (datas != null) {
+            for (int i = 0; i < 3; i++) {
                 datas.add(new UserDynamicModel());
             }
             recyclerAdapter.notifyDataSetChanged();

@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.ui.activity.FavManagerActivity;
+import com.jindou.myapplication.ui.activity.SearchActivity;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import butterknife.BindView;
@@ -98,6 +99,17 @@ public class ShangZhaoFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(activity, "you clicked MenuItem.", Toast.LENGTH_SHORT).show();
+                switch (item.getItemId()) {
+                    case R.id.action_search:
+                        Intent intent=new Intent(activity, SearchActivity.class);
+                        intent.putExtra(ShangWenFragment.SEARCH_SOURCE,"商招搜索");
+                        intent.putExtra(ShangWenFragment.SEARCH_TYPE,1);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
+
                 return true;
             }
         });

@@ -129,17 +129,5 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.andview.refreshview.XRefreshView
-        android:id="@+id/authorArticleRefreshView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFF7F7F7">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/authorArticleRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"></android.support.v7.widget.RecyclerView>
-    </com.andview.refreshview.XRefreshView>
-
+    <include layout="@layout/common_recycle_view" />
 </LinearLayout>

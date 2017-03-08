@@ -64,11 +64,21 @@
         <activity
             android:name=".ui.activity.AuthorActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".ui.activity.AuthorArticleDetail"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".ui.activity.SearchActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>

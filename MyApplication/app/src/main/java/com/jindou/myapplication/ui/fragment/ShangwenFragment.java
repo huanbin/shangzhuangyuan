@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.jindou.myapplication.R;
 import com.jindou.myapplication.ui.activity.FavManagerActivity;
+import com.jindou.myapplication.ui.activity.SearchActivity;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import butterknife.BindView;
@@ -30,7 +31,9 @@ import butterknife.OnClick;
  */
 
 public class ShangWenFragment extends Fragment {
-    public static String FAV_TYPE="FAV_TYPE";
+    public static String FAV_TYPE="fav_type";
+    public static String SEARCH_SOURCE="search_source";
+    public static String SEARCH_TYPE="search_type";
     private String[] titles = new String[]{"互联网金融", "电商", "创投", "财经", "房地产", "娱乐", "国内新闻", "国际新闻"};
     private AppCompatActivity activity;
     private IDrawerListener iDrawerListener;
@@ -133,6 +136,17 @@ public class ShangWenFragment extends Fragment {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast.makeText(activity, "you clicked MenuItem.", Toast.LENGTH_SHORT).show();
+                switch (item.getItemId()) {
+                    case R.id.action_search:
+                        Intent intent=new Intent(activity, SearchActivity.class);
+                        intent.putExtra(SEARCH_SOURCE,"商文搜索");
+                        intent.putExtra(SEARCH_TYPE,1);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_radar:
+                        break;
+                }
+
                 return true;
             }
         });

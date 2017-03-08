@@ -8,9 +8,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.jindou.myapplication.R;
+import com.jindou.myapplication.model.UserService;
 import com.jindou.myapplication.ui.activity.BaseTitleActivity;
+import com.jindou.myapplication.ui.util.ToastUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 import timber.log.Timber;
 
 /**
@@ -74,6 +85,33 @@ public class RegisterActivity extends BaseTitleActivity{
                 }
                 break;
             case R.id.btGetVerifyCode:
+                //1.验证手机号是否注册
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://api.100szy.com/")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .build();
+
+                UserService service = retrofit.create(UserService.class);
+                //参数
+                Map<String,String> queryStrings=new HashMap<>();
+                //v=dev&c=user&a=check_email_and_tel& param=13012345678
+                queryStrings.put("v","dev");
+                queryStrings.put("c","user");
+                queryStrings.put("a","check_email_and_tel");
+                queryStrings.put("param","18210331408");
+                Call<String> verifyCode = service.getVerifyCode(queryStrings);
+                verifyCode.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        ToastUtil.show(RegisterActivity.this,"response="+response);
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        ToastUtil.show(RegisterActivity.this,"error="+t.getMessage());
+                    }
+                });
+
                 Toast.makeText(RegisterActivity.this,"获取验证码...",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btShowPwd:

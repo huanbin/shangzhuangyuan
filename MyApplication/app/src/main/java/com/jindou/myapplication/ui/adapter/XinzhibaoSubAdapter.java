@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
@@ -19,6 +21,8 @@ import com.jindou.myapplication.model.UserDynamicModel;
 import com.jindou.myapplication.ui.activity.AuthorActivity;
 import com.jindou.myapplication.ui.util.ToastUtil;
 import com.jindou.myapplication.ui.view.CircleImageView;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.view.ViewHelper;
 
 import java.util.List;
 
@@ -57,31 +61,38 @@ public class XinzhibaoSubAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position, boolean isItem) {
         final DynamicViewHolder dynamicViewHolder = (DynamicViewHolder) holder;
-        dynamicViewHolder.itemView.setOnTouchListener(new View.OnTouchListener() {
+        dynamicViewHolder.item.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
+//                Log.d("TAG","scaledTouchSlop="+scaledTouchSlop);
+                float x = event.getX();
+                boolean isConsume = false;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        float x=event.getX();
                         break;
                     case MotionEvent.ACTION_MOVE:
-
+                        float deltaX = x - lastX;
+//                        Log.d("TAG", "deltaX=" + deltaX);
+//                        Log.d("TAG", "abs deltaX=" + Math.abs(deltaX));
+                        if (Math.abs(deltaX) > scaledTouchSlop) {
+                            dynamicViewHolder.cancle.setVisibility(View.VISIBLE);
+                            isConsume = true;
+                        }
                         break;
                     case MotionEvent.ACTION_UP:
-
                         break;
                     default:
                         break;
                 }
-                dynamicViewHolder.cancle.setVisibility(View.VISIBLE);
-                return true;
+                lastX = x;
+                return isConsume;
             }
         });
         dynamicViewHolder.cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ToastUtil.show(context, "取消订阅...");
+                dynamicViewHolder.cancle.setVisibility(View.GONE);
             }
         });
         dynamicViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +115,7 @@ public class XinzhibaoSubAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
         public TextView title;
         public TextView content;
         public TextView cancle;
+        public View item;
 
         public DynamicViewHolder(View itemView) {
             super(itemView);
@@ -111,6 +123,7 @@ public class XinzhibaoSubAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHo
             title = (TextView) itemView.findViewById(R.id.xinzhibao_sub_title);
             content = (TextView) itemView.findViewById(R.id.xinzhibao_sub_content);
             cancle = (TextView) itemView.findViewById(R.id.xinzhibao_sub_cancle);
+            item = itemView.findViewById(R.id.item);
         }
     }
 }
