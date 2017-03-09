@@ -102,4 +102,6 @@
     <string name="search_zhaoshang">招商</string>
     <string name="search_zhaobiao">招标</string>
     <string name="search_report">报告</string>
+    <string name="tip_account_or_phone_empty">手机号或邮箱不能为空</string>
+    <string name="password_empty">密码不能为空</string>
 </resources>

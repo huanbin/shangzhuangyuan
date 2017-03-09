@@ -3,30 +3,22 @@ package com.jindou.myapplication.ui.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.method.Touch;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.jindou.myapplication.R;
-import com.jindou.myapplication.model.UserDynamicModel;
+import com.jindou.myapplication.model.AuthorModel;
 import com.jindou.myapplication.ui.activity.AuthorActivity;
 import com.jindou.myapplication.ui.util.ToastUtil;
 import com.jindou.myapplication.ui.view.CircleImageView;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.view.ViewHelper;
 
 import java.util.List;
-
-import timber.log.Timber;
 
 /**
  * Created by zhishi on 2017/3/3.
@@ -34,14 +26,14 @@ import timber.log.Timber;
 
 public class XinzhibaoSubAdapter extends BaseRecyclerAdapter<RecyclerView.ViewHolder> {
 
-    private List<UserDynamicModel> datas;
+    private List<AuthorModel> datas;
     private Context context;
     private final int scaledTouchSlop;
     private GestureDetector gestureDetector;
     private static GestureDetector.OnGestureListener onGestureListener;
     private float lastX;
 
-    public XinzhibaoSubAdapter(List<UserDynamicModel> datas, Context context) {
+    public XinzhibaoSubAdapter(List<AuthorModel> datas, Context context) {
         this.datas = datas;
         this.context = context;
         scaledTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();

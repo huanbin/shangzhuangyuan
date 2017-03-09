@@ -9,9 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
@@ -20,9 +18,8 @@ import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
 import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.jindou.myapplication.R;
-import com.jindou.myapplication.model.UserDynamicModel;
+import com.jindou.myapplication.model.AuthorModel;
 import com.jindou.myapplication.ui.adapter.XinzhibaoSubAdapter;
-import com.jindou.myapplication.ui.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +40,7 @@ public class XinzhibaoSubAuthorFragment extends Fragment {
     public RecyclerView recyclerView;
 
     private AppCompatActivity activity;
-    private List<UserDynamicModel> datas;
+    private List<AuthorModel> datas;
 
 
     @Nullable
@@ -142,7 +139,7 @@ public class XinzhibaoSubAuthorFragment extends Fragment {
         if (datas != null) {
             datas.clear();
             for (int i = 0; i < 6; i++) {
-                datas.add(new UserDynamicModel());
+                datas.add(new AuthorModel());
             }
             recyclerAdapter.notifyDataSetChanged();
         }
@@ -152,7 +149,7 @@ public class XinzhibaoSubAuthorFragment extends Fragment {
     private void loadMoreData() {
         if (datas != null) {
             for (int i = 0; i < 3; i++) {
-                datas.add(new UserDynamicModel());
+                datas.add(new AuthorModel());
             }
             recyclerAdapter.notifyDataSetChanged();
         }

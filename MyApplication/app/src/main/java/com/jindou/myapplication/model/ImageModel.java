@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by zhishi on 2017/2/24.
+ * 保存Webview页面图片信息
  */
 
 public class ImageModel implements Serializable{

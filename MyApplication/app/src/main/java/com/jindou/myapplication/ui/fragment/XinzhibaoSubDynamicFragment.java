@@ -15,13 +15,9 @@ import android.view.ViewGroup;
 
 import com.andview.refreshview.XRefreshView;
 import com.andview.refreshview.XRefreshViewFooter;
-import com.andview.refreshview.recyclerview.BaseRecyclerAdapter;
 import com.jindou.myapplication.R;
-import com.jindou.myapplication.model.UserDynamicModel;
 import com.jindou.myapplication.model.XinzhibaoNewModel;
-import com.jindou.myapplication.ui.activity.AuthorArticleDetail;
 import com.jindou.myapplication.ui.adapter.AuthorArticleAdapter;
-import com.jindou.myapplication.ui.adapter.XinzhibaoSubAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

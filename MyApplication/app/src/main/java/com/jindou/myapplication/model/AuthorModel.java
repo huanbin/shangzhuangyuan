@@ -5,15 +5,15 @@ import java.io.Serializable;
 /**
  * Created by zhishi on 2017/3/3.
  */
-public class UserDynamicModel implements Serializable {
+public class AuthorModel implements Serializable {
     private String subUserIcon;
     private String subTitle;
     private String subContent;
 
-    public UserDynamicModel() {
+    public AuthorModel() {
     }
 
-    public UserDynamicModel(String subUserIcon, String subTitle, String subContent) {
+    public AuthorModel(String subUserIcon, String subTitle, String subContent) {
         this.subUserIcon = subUserIcon;
         this.subTitle = subTitle;
         this.subContent = subContent;
@@ -45,7 +45,7 @@ public class UserDynamicModel implements Serializable {
 
     @Override
     public String toString() {
-        return "UserDynamicModel{" +
+        return "AuthorModel{" +
                 "subUserIcon='" + subUserIcon + '\'' +
                 ", subTitle='" + subTitle + '\'' +
                 ", subContent='" + subContent + '\'' +

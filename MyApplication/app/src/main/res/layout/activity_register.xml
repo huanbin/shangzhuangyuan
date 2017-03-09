@@ -114,6 +114,7 @@
             />
 
         <Button
+            android:id="@+id/userRegister"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginTop="30dp"
@@ -128,6 +129,7 @@
             android:layout_marginBottom="30dp">
 
             <Button
+                android:id="@+id/userAlreadyRegister"
                 android:layout_width="match_parent"
                 android:layout_height="42dp"
                 android:layout_alignParentBottom="true"

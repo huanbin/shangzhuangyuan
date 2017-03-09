@@ -1,7 +1,13 @@
 package com.jindou.myapplication.model;
 
+/**
+ *
+ */
 public class NewsModel {
-    private String title, type,source;
+    private String title, type, source;
+    //新闻内容
+//    private String content;
+    //图片数目
     private int pic;
 
     public NewsModel() {
