@@ -2,14 +2,10 @@ package com.jindou.myapplication.ui.activity;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Environment;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -20,17 +16,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jindou.myapplication.R;
+import com.jindou.myapplication.model.User;
 import com.jindou.myapplication.ui.activity.user.LoginActivity;
+import com.jindou.myapplication.ui.activity.user.UserInfoActivity;
 import com.jindou.myapplication.ui.fragment.ShangWenFragment;
 import com.jindou.myapplication.ui.fragment.ShangZhaoFragment;
 import com.jindou.myapplication.ui.fragment.ShangJiFragment;
 import com.jindou.myapplication.ui.fragment.XinZhiBaoFragment;
+import com.jindou.myapplication.ui.util.ToastUtil;
 import com.jindou.myapplication.ui.util.UiUtils;
 
+import butterknife.BindString;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import qiu.niorgai.StatusBarCompat;
 import timber.log.Timber;
 
 /**
@@ -39,12 +37,12 @@ import timber.log.Timber;
  * mdpi
  */
 public class MainActivity extends BaseActivity implements ShangWenFragment.IDrawerListener {
-    private static final int[] NAV_IMG_LEFT = new int[]{R.drawable.radar_gold, R.drawable.fav_collection, R.drawable.download, R.drawable.suggesst, R.drawable.aboutus};
-    private static final int[] NAV_NAMES = new int[]{R.string.nav_leida, R.string.nav_fav, R.string.nav_download, R.string.nav_suggest, R.string.nav_aboutus};
-    private static final int[] NAV_IMG_RIGHT = new int[]{R.drawable.arrow_right, R.drawable.arrow_right, R.drawable.float_button, R.drawable.arrow_right, R.drawable.arrow_right};
     private static final int[] TAB_IMG_SELECTED = new int[]{R.drawable.tab_shangwen_selected, R.drawable.tab_shangzhao_selected, R.drawable.tab_shangji_selected, R.drawable.tab_xinzhibao_selected};
+    private final String[] FRAGMENT_TAGS = new String[]{"ShangWenTag", "ShangZhaoTag", "ShangJiTag", "XinZhiBaoTag"};
+    private int currentIndex = 0;
+    private String INDEX_KEY = "currentFragment";
     //登录
-    private int REQUET_LOGIN=100;
+    private int REQUET_LOGIN = 100;
 
     @BindView(R.id.my_drawer_layout)
     public DrawerLayout mDrawerLayout;
@@ -73,14 +71,19 @@ public class MainActivity extends BaseActivity implements ShangWenFragment.IDraw
     @BindView(R.id.ly_aboutus)
     public LinearLayout lyAbountus;
 
-    private ShangWenFragment fragment1;
-    private ShangZhaoFragment fragment2;
-    private ShangJiFragment fragment3;
-    private XinZhiBaoFragment fragment4;
-    private FragmentManager fragmentManager;
+    @BindString(R.string.login)
+    String sLogin;
+
+    private ShangWenFragment mShangWenFrag;
+    private ShangZhaoFragment mShangZhaoFrag;
+    private ShangJiFragment mShangJiFrag;
+    private XinZhiBaoFragment mXinZhiBaoFrag;
+    private FragmentManager mFragmentManager;
 
     private boolean isSelected;
     private boolean isLogin;
+    private User mUser;
+
     @Override
     public int getContentViewId() {
         return R.layout.activity_main;
@@ -98,12 +101,68 @@ public class MainActivity extends BaseActivity implements ShangWenFragment.IDraw
 //            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 //        }
 //        ButterKnife.bind(this);
-
+        mFragmentManager = getSupportFragmentManager();
+        if (savedInstanceState != null) {
+            currentIndex = savedInstanceState.getInt(INDEX_KEY);
+            mShangWenFrag = (ShangWenFragment) mFragmentManager.findFragmentByTag(FRAGMENT_TAGS[0]);
+            mShangZhaoFrag = (ShangZhaoFragment) mFragmentManager.findFragmentByTag(FRAGMENT_TAGS[1]);
+            mShangJiFrag = (ShangJiFragment) mFragmentManager.findFragmentByTag(FRAGMENT_TAGS[2]);
+            mXinZhiBaoFrag = (XinZhiBaoFragment) mFragmentManager.findFragmentByTag(FRAGMENT_TAGS[3]);
+        }
 //        全屏滑动DrawerLayout
         UiUtils.setDrawerLeftEdgeSize(this, mDrawerLayout, 0.5f);
-        fragmentManager = getSupportFragmentManager();
         //默认选中第一个tab
         setTabSelection(mTabShangWen, 0);
+
+//        Intent intent = getIntent();
+//        if (intent!=null) {
+//            String className = intent.getComponent().getClassName();
+//            Timber.d("className=" + className);
+//            mUser = (User) intent.getSerializableExtra(LoginActivity.USER_KEY);
+//            if (mUser.getToken() != null) {
+//                isLogin = true;
+//            }
+//        }
+
+    }
+
+    @Override
+    public void handleIntent() {
+        super.handleIntent();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (intent!=null) {
+            String className = intent.getComponent().getClassName();
+            Timber.d("className=" + className);
+            mUser = (User) intent.getSerializableExtra(LoginActivity.USER_KEY);
+            if (mUser !=null&& mUser.getToken() != null) {
+                isLogin = true;
+            }else {
+                isLogin=false;
+            }
+        }
+    }
+
+    //保存Fragment状态恢复（防止内存不足等情况，程序在后台被杀死）
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(INDEX_KEY, currentIndex);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Timber.d("onResume isLogin=" + isLogin);
+        //如果已登录
+        if (isLogin) {
+            mUserName.setText(mUser.getUsername());
+        } else {
+            mUserName.setText(sLogin);
+        }
     }
 
     /**
@@ -139,16 +198,22 @@ public class MainActivity extends BaseActivity implements ShangWenFragment.IDraw
         mDrawerLayout.closeDrawer(GravityCompat.START);
         /*跳转登陆或用户详情页*/
         if (!isLogin) {
-//            startActivity(new Intent(this, LoginActivity.class));
-            startActivityForResult(new Intent(this, LoginActivity.class),REQUET_LOGIN);
+            startActivity(new Intent(this, LoginActivity.class));
+//            用户可能去注册
+//            startActivityForResult(new Intent(this, LoginActivity.class),REQUET_LOGIN);
+        } else {
+            //个人信息
+            ToastUtil.show(this, "个人中心");
+            Intent intent=new Intent(this, UserInfoActivity.class);
+            intent.putExtra(LoginActivity.USER_KEY,mUser);
+            startActivity(intent);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==REQUET_LOGIN&&resultCode==RESULT_OK&&data!=null) {
-            data.get
+        if (requestCode == REQUET_LOGIN && resultCode == RESULT_OK && data != null) {
         }
     }
 
@@ -187,40 +252,41 @@ public class MainActivity extends BaseActivity implements ShangWenFragment.IDraw
      * @param i
      */
     private void setTabSelection(TextView tv, int i) {
+        currentIndex = i;
         clearSelection(tv);
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         hideFragments(fragmentTransaction);
         switch (i) {
             case 0:
-                if (fragment1 == null) {
-                    fragment1 = new ShangWenFragment();
-                    fragmentTransaction.add(R.id.container, fragment1);
+                if (mShangWenFrag == null) {
+                    mShangWenFrag = new ShangWenFragment();
+                    fragmentTransaction.add(R.id.container, mShangWenFrag, FRAGMENT_TAGS[0]);
                 } else {
-                    fragmentTransaction.show(fragment1);
+                    fragmentTransaction.show(mShangWenFrag);
                 }
                 break;
             case 1:
-                if (fragment2 == null) {
-                    fragment2 = ShangZhaoFragment.newInstance("Tab2...");
-                    fragmentTransaction.add(R.id.container, fragment2);
+                if (mShangZhaoFrag == null) {
+                    mShangZhaoFrag = ShangZhaoFragment.newInstance();
+                    fragmentTransaction.add(R.id.container, mShangZhaoFrag, FRAGMENT_TAGS[1]);
                 } else {
-                    fragmentTransaction.show(fragment2);
+                    fragmentTransaction.show(mShangZhaoFrag);
                 }
                 break;
             case 2:
-                if (fragment3 == null) {
-                    fragment3 = ShangJiFragment.newInstance("Tab3...");
-                    fragmentTransaction.add(R.id.container, fragment3);
+                if (mShangJiFrag == null) {
+                    mShangJiFrag = ShangJiFragment.newInstance();
+                    fragmentTransaction.add(R.id.container, mShangJiFrag, FRAGMENT_TAGS[2]);
                 } else {
-                    fragmentTransaction.show(fragment3);
+                    fragmentTransaction.show(mShangJiFrag);
                 }
                 break;
             case 3:
-                if (fragment4 == null) {
-                    fragment4 = XinZhiBaoFragment.newInstance("Tab4...");
-                    fragmentTransaction.add(R.id.container, fragment4);
+                if (mXinZhiBaoFrag == null) {
+                    mXinZhiBaoFrag = XinZhiBaoFragment.newInstance();
+                    fragmentTransaction.add(R.id.container, mXinZhiBaoFrag, FRAGMENT_TAGS[3]);
                 } else {
-                    fragmentTransaction.show(fragment4);
+                    fragmentTransaction.show(mXinZhiBaoFrag);
                 }
                 break;
             default:
@@ -259,17 +325,17 @@ public class MainActivity extends BaseActivity implements ShangWenFragment.IDraw
     //重置fragment状态
     private void hideFragments(FragmentTransaction transaction) {
         // TODO Auto-generated method stub
-        if (fragment1 != null) {
-            transaction.hide(fragment1);
+        if (mShangWenFrag != null) {
+            transaction.hide(mShangWenFrag);
         }
-        if (fragment2 != null) {
-            transaction.hide(fragment2);
+        if (mShangZhaoFrag != null) {
+            transaction.hide(mShangZhaoFrag);
         }
-        if (fragment3 != null) {
-            transaction.hide(fragment3);
+        if (mShangJiFrag != null) {
+            transaction.hide(mShangJiFrag);
         }
-        if (fragment4 != null) {
-            transaction.hide(fragment4);
+        if (mXinZhiBaoFrag != null) {
+            transaction.hide(mXinZhiBaoFrag);
         }
     }
 

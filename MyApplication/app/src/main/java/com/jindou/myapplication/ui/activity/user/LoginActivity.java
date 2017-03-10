@@ -13,11 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.google.gson.JsonElement;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.jindou.myapplication.R;
+import com.jindou.myapplication.model.User;
 import com.jindou.myapplication.model.service.HttpCall;
 import com.jindou.myapplication.model.service.HttpCallback;
 import com.jindou.myapplication.model.service.UserService;
@@ -52,10 +53,15 @@ public class LoginActivity extends BaseTitleActivity {
     public Button btUserRegister;
     @BindView(R.id.btShowPwd)
     public ImageButton btShowPwd;
-    public final static String KEY_TYPE = "type";
+    public final static String KEY_TYPE = "pageType";
+    public final static int REGIST = 0;
+    public final static int FORGET_PASSWORD = 1;
 
     public final static int LOGIN_SUCCESS = 0;
     public final static int LOGIN_FAILED = 1;
+    public final static String USER_KEY = "user_account";
+    public final static String INTENT_TYPE_KEY = "user_account";
+
 
     private Handler mHandler = new Handler() {
         @Override
@@ -63,7 +69,11 @@ public class LoginActivity extends BaseTitleActivity {
             super.handleMessage(msg);
             switch (msg.what) {
                 case LOGIN_SUCCESS:
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    User user= (User) msg.obj;
+                    Timber.d("LOGIN_SUCCESS user="+user.toString());
+                    intent.putExtra(USER_KEY,user);
+                    startActivity(intent);
                     if (!isFinishing()) {
                         finish();
                     }
@@ -119,7 +129,7 @@ public class LoginActivity extends BaseTitleActivity {
                 break;
             case R.id.userRegister:
                 Intent intent = new Intent(this, RegisterActivity.class);
-                intent.putExtra(KEY_TYPE, "1");
+                intent.putExtra(KEY_TYPE, REGIST);
                 startActivity(intent);
                 break;
             case R.id.iv_qq_weixin:
@@ -133,7 +143,7 @@ public class LoginActivity extends BaseTitleActivity {
                 break;
             case R.id.userForgetPwd:
                 Intent intentRegister = new Intent(this, RegisterActivity.class);
-                intentRegister.putExtra(KEY_TYPE, "2");
+                intentRegister.putExtra(KEY_TYPE, FORGET_PASSWORD);
                 startActivity(intentRegister);
                 break;
             case R.id.btShowPwd:
@@ -172,7 +182,9 @@ public class LoginActivity extends BaseTitleActivity {
                 int errcode = Integer.parseInt(asJsonObject.get("errcode").getAsString());
                 Timber.d("errcode="+errcode);
                 if (0==errcode) {
-                    mHandler.sendEmptyMessage(LOGIN_SUCCESS);
+//                    mHandler.sendEmptyMessage(LOGIN_SUCCESS);
+                    User user=new Gson().fromJson(asJsonObject.get("data").getAsJsonObject(),User.class);
+                    mHandler.sendMessage(mHandler.obtainMessage(LOGIN_SUCCESS,user));
                 }else {
                     mHandler.sendEmptyMessage(LOGIN_FAILED);
                 }

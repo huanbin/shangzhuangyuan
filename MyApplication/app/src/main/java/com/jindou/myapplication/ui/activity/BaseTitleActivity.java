@@ -34,8 +34,8 @@ public abstract class BaseTitleActivity extends AppCompatActivity {
     public abstract int getContentViewId();
 
     public abstract String setTitle();
-    public abstract boolean setRightCompleteViewShow();
-    public abstract boolean setRightOverfloViewShow();
+    public  boolean setRightCompleteViewShow(){return false;};
+    public  boolean setRightOverfloViewShow(){return false;};
 //  点击导航栏右侧完成按键
 //    public abstract void onClickComplete();
 //    public abstract void onClickOverflow();

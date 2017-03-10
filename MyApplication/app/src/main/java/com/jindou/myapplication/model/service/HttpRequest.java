@@ -15,6 +15,7 @@ public class HttpRequest {
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.100szy.com/")
                 .addConverterFactory(ScalarsConverterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 

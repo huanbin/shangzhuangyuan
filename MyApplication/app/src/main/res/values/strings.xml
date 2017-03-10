@@ -94,7 +94,7 @@
     <string name="xinzhibao_knowledge_playing">文化娱乐</string>
     <string name="xinzhibao_financing">投融资</string>
     <string name="xinzhibao_product_manager">产品经理</string>
-    <string name="forget_password">忘记密码</string>
+    <string name="forget_password">重置密码</string>
     <string name="xinzhibao_subscription">订阅</string>
     <string name="cancel_subscription">取消订阅</string>
     <string name="search_huizhan">会展</string>
@@ -104,4 +104,15 @@
     <string name="search_report">报告</string>
     <string name="tip_account_or_phone_empty">手机号或邮箱不能为空</string>
     <string name="password_empty">密码不能为空</string>
+    <string name="account_manager">账号管理</string>
+    <string name="change">更换</string>
+    <string name="phone_number">手\t机\t号:</string>
+    <string name="email">邮\t\t\t\t箱:</string>
+    <string name="bind">绑定</string>
+    <string name="society_account">社交账号:</string>
+    <string name="no_society_account">暂无</string>
+    <string name="modify_password">修改密码:</string>
+    <string name="account_name">昵\t\t\t\t称:</string>
+    <string name="complete">完成</string>
+    <string name="get_verifycode">点击获取</string>
 </resources>

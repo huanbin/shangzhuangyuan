@@ -42,9 +42,8 @@ import butterknife.OnClick;
 
 public class XinZhiBaoFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
-    private final  static String[] pageTitles=new String[]{"动态","作者主页"};
-    private Fragment[] subFragments=new Fragment[]{new XinzhibaoSubDynamicFragment(),new XinzhibaoSubAuthorFragment()};
-    private String mParam1;
+    private final static String[] pageTitles = new String[]{"动态", "作者主页"};
+    private Fragment[] subFragments = new Fragment[]{new XinzhibaoSubDynamicFragment(), new XinzhibaoSubAuthorFragment()};
     private AppCompatActivity activity;
     private List<XinzhibaoNewModel> mDatas;
     private XinzhibaoNewAdapter adapter;
@@ -77,20 +76,14 @@ public class XinZhiBaoFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static XinZhiBaoFragment newInstance(String param1) {
+    public static XinZhiBaoFragment newInstance() {
         XinZhiBaoFragment fragment = new XinZhiBaoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-        }
     }
 
     @Override
@@ -266,10 +259,11 @@ public class XinZhiBaoFragment extends Fragment {
                 break;
         }
     }
+
     //stateAnimator
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void startAnimator(View view) {
-        WrapperView wrapperView=new WrapperView(view);
+        WrapperView wrapperView = new WrapperView(view);
         AnimatorSet set = new AnimatorSet();
         ObjectAnimator backgroundAnimator = ObjectAnimator.ofArgb(wrapperView, "background", Color.parseColor("#FFF09E0A"));
         backgroundAnimator.setDuration(1000);
@@ -292,8 +286,8 @@ public class XinZhiBaoFragment extends Fragment {
     }
 
     private void setVisible(boolean isVisible) {
-        newView.setVisibility(isVisible?View.VISIBLE:View.GONE);
-        subscriptionView.setVisibility(!isVisible?View.VISIBLE:View.GONE);
+        newView.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+        subscriptionView.setVisibility(!isVisible ? View.VISIBLE : View.GONE);
     }
 
     /**

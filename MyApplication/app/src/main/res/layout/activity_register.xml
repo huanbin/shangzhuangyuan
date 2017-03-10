@@ -26,7 +26,9 @@
             android:hint="@string/account_hint"
             android:textColor="#FF666666"
             android:textColorHint="#FFCCCCCC"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:singleLine="true"
+            />
 
         <View
             android:layout_width="match_parent"
@@ -50,7 +52,9 @@
                 android:hint="@string/verifycode"
                 android:textColor="#FF666666"
                 android:textColorHint="#FFCCCCCC"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:singleLine="true"
+                />
             <Button
                 android:id="@+id/btGetVerifyCode"
                 android:layout_width="wrap_content"
@@ -58,7 +62,8 @@
                 android:layout_gravity="right|bottom"
                 android:gravity="right|bottom"
                 android:background="@null"
-                android:text="点击获取"
+                android:textAllCaps="false"
+                android:text="@string/get_verifycode"
                 android:textColor="#F09E0A"
                 android:textSize="12sp" />
         </FrameLayout>
@@ -86,7 +91,9 @@
                 android:inputType="textPassword"
                 android:textColor="#FF666666"
                 android:textColorHint="#FFCCCCCC"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:singleLine="true"
+                />
             <!--android:drawableRight="@drawable/selector_show_hide_password"-->
             <!--<Button-->
             <!--android:id="@+id/mIbtShowPwd"-->

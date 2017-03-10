@@ -33,7 +33,6 @@ public class ShangJiFragment extends Fragment {
 
     private String[] titles = new String[]{"IT互联网", "交通/物流", "财政/金融", "纺织/制造","教育/培训"};
     private static final String ARG_PARAM1 = "param1";
-    private String mParam1;
     private AppCompatActivity activity;
     private ShangWenFragment.IDrawerListener iDrawerListener;
 
@@ -57,23 +56,16 @@ public class ShangJiFragment extends Fragment {
     public ImageButton shangjiFavManager;
 
     public ShangJiFragment() {
-        // Required empty public constructor
     }
 
-    public static ShangJiFragment newInstance(String param1) {
+    public static ShangJiFragment newInstance() {
         ShangJiFragment fragment = new ShangJiFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-        }
     }
 
     @Override

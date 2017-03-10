@@ -50,6 +50,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     //转换器
     compile 'com.squareup.retrofit2:converter-scalars:2.0.0'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
 
 
 }

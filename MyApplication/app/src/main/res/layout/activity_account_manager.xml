@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="38dp"
+              android:layout_marginRight="38dp"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="bottom|center_horizontal">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/accountIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="25dp"
+                android:scaleType="center"
+                android:src="@drawable/author_user_center_icon"
+                />
+
+            <ImageView
+                android:id="@+id/accountUploadIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="25dp"
+                android:scaleType="center"
+                android:src="@drawable/account_icon_upload"
+                />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/account_name"
+                android:textColor="#FF1A1A1A"
+                android:textSize="15dp"
+                />
+
+            <TextView
+                android:id="@+id/accountName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FF999999"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <TextView
+                android:id="@+id/modifyAccountName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="@string/change"
+                android:textColor="#FF999999"
+                android:textSize="15dp"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/line_color"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/phone_number"
+                android:textColor="#FF1A1A1A"
+                android:textSize="15dp"
+                />
+
+            <TextView
+                android:id="@+id/accountPhoneOrEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FF999999"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/modifyAccountPhoneOrEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="center"
+                android:src="@drawable/arrow_right_black"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/line_color"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/email"
+                android:textColor="#FF1A1A1A"
+                android:textSize="15dp"
+                />
+
+            <TextView
+                android:id="@+id/accountEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FF999999"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/bindEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="center"
+                android:src="@drawable/arrow_right_black"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/line_color"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/modify_password"
+                android:textColor="#FF1A1A1A"
+                android:textSize="15dp"
+                />
+
+            <TextView
+                android:id="@+id/accountPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#FF999999"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/modifyAccountPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="center"
+                android:src="@drawable/arrow_right_black"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/line_color"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/society_account"
+                android:textColor="#FF1A1A1A"
+                android:textSize="15dp"
+                />
+
+            <TextView
+                android:id="@+id/societyAccount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/no_society_account"
+                android:textColor="#FF999999"
+                android:textSize="15dp"
+                android:layout_marginLeft="20dp"
+                />
+
+            <ImageView
+                android:id="@+id/modifySocietyAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:scaleType="center"
+                android:src="@drawable/arrow_right_black"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/line_color"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        >
+
+        <Button
+            android:id="@+id/accountLogout"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_register_button"
+            android:text="退出登录"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            />
+    </RelativeLayout>
+</LinearLayout>
